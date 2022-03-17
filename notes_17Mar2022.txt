@@ -1,0 +1,267 @@
+External trainer
+Jagadeeswaran Rangappan
+t-jagdeeswaran
+9488029292
+
+1986
+
+
+C
+C++
+Java
+
+Oracle 8
+
+Struts
+Spring boot
+
+
+Microservices
+AWS
+docker 
+
+kubernetes
+
+JF027
+JF028
+
+Stage 3 (react)
+4,5
+
+
+thu, fri
+	morning we can start at 9 am		
+representatives to confirm the timings for next day
+
+udemy videos		knowledge
+	first 2 stages
+
+tekstac platform		hands on practise
+
+
+demo
+
+Assessment type 1	is code challenge
+	is for every milestone
+
+Assessment type 2 	is ICT
+	is for every stage
+
+Stage 1
+	HTML, CSS, Javascript, JQuery		Code challenge	over
+	RDBMS, SQL			CC
+	Core Java				CC
+
+	ICT for the entire stage
+
+Stage 2
+	Spring core, Maven
+	Junit, Mocito
+	Spring boot MVC
+
+
+Stage 3
+	Spring boot REST
+	Code quality, Logging
+	React
+
+Stage 4
+	Spring Security
+	Microservices
+	Cloud	AWS
+
+
+
+RDMBS SQL
+1) ANSI SQL	-	MySQL 
+2) PL/SQL		-	Oracle
+
+
+
+rep request the coach to add your cohort code to the trainers portal
+
+
+
+FOR sql Lab setup:
+-----------------------
+mysql workbench
+
+RDBMS
+----------
+terminologies
+
+TABLE
+ROW	RECORD		TUPLE
+COLUMN			FIELD
+DATA
+NULL		nothing	- 	information missing	-	null is not a space 		null is not 0	
+
+operators
+
+PROJECTION	A table may have lot of columns, but we project only certain columns	SELECT * FROM TABLE1 	instead of *, if you specify specific columns, then you are doing PROJECTION
+SELECTION	A table may have lot of records, but we select only certain records based on condition(s). 	WHERE
+UNION		combine the result of 2 queries			addition		+	Some records found common in both queries are produced only once.	5+5	may not always be 10
+INTERSECT	find only the records common among 2 queries	
+MINUS		all records obtained from first query, minus the common records from between second query
+UNION ALL	INCLUDING DUPLICATE RECORDS		5+5=10
+DIVIDE		all the rows from 1st query, that has matching records with all the rows in second query
+
+
+
+3 customers
+3 products
+
+how many customers have purchased all the 3 products?????	DIVIDE
+
+
+PRODUCT
+		whenever you do join 			JOIN
+		cartesian product. that means, all rows in first table are considered to have matching records with all rows in second table
+		if you have join condition, then it is PRODUCT	(Not cartesian product)
+
+
+Normalization
+	aim is to reduce the redundancy 
+
+ATTENDANCE
+-----------------
+Ramkumar		989898998		17-Mar-2022	P
+Sureshkumar	667676766		17-Mar-2022	P
+Ramkumar		9888989898	18-Mar-2022	P
+
+
+STUDENT
+121	Ram kumar		989898998
+
+
+ATTENDANCE
+121	17-Mar-2022			P
+
+
+
+ARRIVE AT A VERY SCIENTIFICALLY DESIGNED TABLE STRUCTURE
+
+in step/ stage, your table conforms to a Normal Form
+
+1NF	
+2NF
+3NF
+
+BCNF
+
+
+a table is said to be in 1NF if every cell in the table has precisely only 1 data
+
+address columns
+
+124, Raja street, Coimbatore - 641002
+
+
+while doing business intelligence, we need to find candidates from Coimbatore
+
+split this address column into
+
+dno	street	city	pincode
+124	Raja st	Coimb..	641002
+
+
+
+Year	Sem
+1	I
+
+1	II
+
+
+
+2NF
+a table is said to be 2NF if it is already in 1NF and every attribute is functionally dependent on whole key
+
+student table has columns only related to the student
+
+Attendance table should not have all student details
+
+
+3NF
+a table is said to be 3NF if it is already in 2NF and every attribute is functionally dependent on primary key
+
+
+STUDENT
+sid, sname, dob, a1, a2, city, pincode, state
+		Kolkata, 11111, Rajastan
+
+why this inconsistency happened?
+
+State is not dependent on the student, because, city is there. 
+
+state is dependent on city
+
+city master table
+
+
+
+STUDENT_DETAILS
+STUDENT_AC_DETAILS
+STUDENT_PERSONAL_DETAILS
+STUDENT_PROJECT_DETAILS
+
+
+
+BCNF
+	Boyce Codd
+
+if the table has more than 1 candidate key and they are composite and they are overlapping
+
+
+
+co1	col2	col3	col4
+
+
+
+primary key
+foreign key
+
+candidate key		is any column(s) that is/are used to find a row uniquely. It is a candidate for primary key
+alternate key		any candidate key which is not primary key, is called as alternate key
+super key
+
+
+
+composite key		more than 1 column combined to find a row uniquely
+
+
+name, father's name, dob, address, city
+
+name, dob			it may be unique
+
+
+
+a primary key can be composite
+
+example for a primary key which is composite
+
+have you seen a departmental store bill
+
+one bill contains
+	lot of items
+
+how they store these items in the bill table?
+
+BILLNO	ITEMNO	QTY	......
+1	102	2
+1	103	1
+1	111	3
+1	122	2
+
+
+
+SELECT * FROM BILLS WHERE BILLNO=1;
+
+
+BILLNO and  ITEMNO	together is a primary key in this table
+
+this is a composite primary key
+
+
+STUDENT PROJECT TABLE
+SID	PID
+
