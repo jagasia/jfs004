@@ -265,3 +265,97 @@ this is a composite primary key
 STUDENT PROJECT TABLE
 SID	PID
 
+
+
+insert into branch values('B00112','abcd','Allahabad'),
+('B00113','ijkl','Chennai'),
+('B00114','mnop','Kolkata');
+
+
+
+insert into branch (bid, bname, bcity) values ('B00114','mnop','Kolkata');
+
+insert into branch values ('B00114','mnop',null);		//all columns value must be provided. in correct order only
+
+insert into branch values ('B00114','mnop',default);		
+
+insert into branch (bid, bname) values ('B00114','mnop');			--only the NOT NULL columns are supplied
+
+insert into branch (bid, bcity, bname) values ('B00114','New Delhi','mnop');	--order or columns are different
+
+insert into branch values('B00112','abcd','Allahabad'),
+('B00113','ijkl','Chennai'),
+('B00114','mnop','Kolkata');
+
+
+
+	SQL	-	Structured Query Language			mysql
+DDL	data definition language
+	on the structure/schema of the table
+		CREATE	
+		ALTER
+		DROP			remove the table	(not only the rows, the table structure itself is removed)
+		TRUNCATE		remove the records. All the records. No choice to specify only few records. 
+					Why truncate is a DDL??????	It is like DROP and CREATE table.	So fast in removing 						rows
+DML
+		INSERT
+		UPDATE
+		DELETE			removes only the rows (not the structure of the table. Table will be there)
+
+DQL
+		SELECT
+DCL
+		GRANT
+		REVOKE
+TCL
+		COMMIT
+		SAVEPOINT
+		ROLLBACK
+
+
+
+
+SELECT * FROM Branch
+WHERE bcity='Kolkata'
+ORDER BY bid DESC;
+
+
+GROUP BY HAVING
+JOINS
+SUB QUERIES
+
+
+Operators
+	arithmetic operators
+	comparison operators
+	logical operators
+	wild cards		%	_
+
+functions
+	single row function		works for every row
+		UPPER
+		LOWER
+		SUBSTR
+
+	aggegate functions		produce one output per group
+		MIN
+		MAX
+		SUM
+		COUNT
+		AVG
+
+
+
+%		0 or more characters
+_		1 and only 1 character
+
+
+
+UPDATE customers SET Phone_no='9876543210' WHERE Customer_id='CUST1004';
+
+
+
+in mysql workbench
+	when you try to delete / update more than 1 row at a time
+
+

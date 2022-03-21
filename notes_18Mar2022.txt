@@ -1,0 +1,194 @@
+DDL
+	CREATE
+	ALTER
+	DROP
+	TRUNCATE
+DML
+SELECT
+
+Lab setup
+
+install and use mysql workbench?
+
+when downloading mysql workbench, itself, you have an option to include mysql server.
+
+
+in mysql, a schema is also a database
+
+how to create a database?
+	CREATE DATABASE jfs004;
+
+	use jfs004;
+
+now, any sql statement you execute, will be executed on this schema (database)
+
+
+
+DDL
+	CREATE
+
+
+
+1) what are the data types available in MYSQL?
+	int
+	char
+	varchar
+	varbinary
+	blob
+	tinyblob
+	mediumblob
+	longblob
+	float
+	double
+	boolean
+	date
+	time
+	datetime
+	timestamp
+	year
+
+
+char and varchar
+	char(10) always uses 10 character spaces even if we store less than 10 characters
+	varchar(10) will use only the space for the number of characters actually stored
+
+
+
+
+CREATE TABLE PRODUCT
+(
+	ID INT PRIMARY KEY, -- constraint specified in column level
+	NAME VARCHAR(20),	
+	price float
+);
+
+
+drop table product;
+
+CREATE TABLE PRODUCT
+(
+	ID INT,
+    NAME VARCHAR(20),
+    price float,
+    constraint pkpid1 PRIMARY KEY(ID) -- CONSTRAINT specified at the table level
+);
+
+
+
+drop table product;
+
+CREATE TABLE PRODUCT
+(
+	ID INT,
+    NAME VARCHAR(20),
+    price float
+);
+
+ALTER TABLE PRODUCT ADD CONSTRAINT pkpid PRIMARY KEY(ID);	-- ADD CONSTRAINT using ALTER table statement
+
+ALTER TABLE PRODUCT DROP CONSTRAINT PRIMARY KEY;
+
+
+
+ALTER
+	add column
+	drop column
+	modify column	datatype, size, etc
+	rename column
+	add constraint
+	drop constraint
+
+
+DROP
+	DROP TABLE PRODUCT;	
+
+
+What is a foreign key.
+	references primary key of another table.
+
+
+CREATE TABLE SALES
+(
+	SID INT,
+    PID INT,
+    QTY INT
+);
+
+
+
+INSERT INTO PRODUCT VALUES(2, 'PEN',14);
+
+INSERT INTO SALES VALUES(101, 1, 2);
+
+ALTER TABLE SALES ADD CONSTRAINT PRIMARY KEY(SID);
+
+ALTER TABLE SALES ADD CONSTRAINT fkpid FOREIGN KEY(PID) REFERENCES PRODUCT(ID);
+
+While creating a foreign key constraint, we can specify 
+	ON DELETE 	--if you try to delete a row in primary key table, if that pk has references in foreign key table
+		RESTRICT		--DONT ALLOW THIS DELETION
+		SET NULL		--SET NULL IN THAT PLACE
+		CASCADE		--DELETE THOSE CHILD RECORDS ALSO
+
+
+
+CREATE TABLE `trandetails` (
+   `tnumber` varchar(6) NOT NULL,
+   `acnumber` varchar(6) DEFAULT NULL,
+   `dot` date DEFAULT NULL,
+   `medium_of_transaction` varchar(20) DEFAULT NULL,
+   `transaction_type` varchar(20) DEFAULT NULL,
+   `transaction_amount` int(7) DEFAULT NULL,
+   PRIMARY KEY (`tnumber`),
+   KEY `acnumber` (`acnumber`)
+ ) ENGINE=MyISAM DEFAULT CHARSET=latin1
+
+
+
+
+CREATE TABLE SALES
+(
+	SID INT primary key,
+    PID INT,
+    QTY INT,
+    constraint fkprid1 foreign key(PID) references PRODUCT(ID)
+);
+
+
+
+CREATE TABLE `sales` (
+   `SID` int(11) NOT NULL,
+   `PID` int(11) DEFAULT NULL,
+   `QTY` int(11) DEFAULT NULL,
+   PRIMARY KEY (`SID`),
+   KEY `fkprid1` (`PID`)
+ ) ENGINE=MyISAM DEFAULT CHARSET=latin1
+
+
+INSERT INTO PRODUCT VALUES (1, 'Pencil',10);
+
+insert into sales values(11, 2, 10);
+
+
+
+
+
+
+oracle:
+create table product1(
+id int primary key,
+name varchar2(20),
+price number(10,2)
+);
+
+
+
+create table sales1
+(
+ id int primary key,
+ product_id int,
+ qty int
+);
+
+
+alter table sales1 add constraint fk987612 foreign key(product_id) references product1(id);
