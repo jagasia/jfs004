@@ -1,0 +1,311 @@
+1) concepts in java
+2) hands on support
+
+
+
+java concepts:
+---------------------
+What is boxing?
+	automatic conversion of primitives into wrapper class and vice versa
+
+	conversion of primitive to wrapper		boxing
+	automatic					auto boxing
+	vice versa					unboxing
+
+
+
+Integer				is a reference type	in heap
+int				is a primitive type	in stack
+
+what is inside Integer class, 
+	int
+
+	methods that support integer operations
+
+Integer.MAX_VALUE			full caps means constant
+Integer.parseInt			convert anything into int
+
+Integer.valueOf			Integer
+
+
+
+stack
+heap
+
+imagine the rack of lockers as stack
+
+a variable of type primitive
+
+int age=20;
+float marks=95.5f;
+
+these are examples of primitive type variables
+
+imaging these as the token for the lockers
+
+age is the label over the locker #1
+
+
+primitives are always value types. Means, they are in stack.
+why they are called as value types?
+if you go to that memory location, open the locker, what you see????		the value 
+
+
+
+Employee raja=new Employee();
+
+raja is again the label over the locker
+If you open the locker, what you see?		you dont see a value there, but you see another key to heap
+
+the object is stored in heap
+the ref to that object is stored in the stack
+
+primitive are value types. they are stored in stack.
+objects are reference types. they are stored in heap.
+
+
+Why do we call it as stack??????
+
+
+
+Stack is LIFO
+
+any variable you declare inside a method (function) is in stack
+
+main()
+	int age;			yes age is in stack
+	Employee raja;		
+
+Employee raja=new Employee();
+
+Employee siva=raja;			//siva is another locker in stack. 		siva locker, raja locker, both have reference to same heap
+
+Employee raja;			//raja here, is not an object. It is a reference variable		it is in stack only
+raja=new Employee();			//raja here, is an object. of course, that object is in heap. But its reference is in raja var which is in stack
+
+
+new Employee();
+
+int	Integer
+float	Float
+long	Long
+double	Double
+byte	Byte
+short	Short
+char	Character
+boolean	Boolean
+
+
+char var='a';
+
+
+//to check if the value inside this variable is number? or an alphabet?
+
+if(Character.isLetter(var))		//true
+
+var='2';
+
+if(Character.isDigit(var))		//true
+
+
+
+swap(&y,&y)
+
+
+Integer to int conversion		unboxing is also automatic
+
+void swap(Integer a, Integer b)		a, b are formal parameter		when i swap a and b
+
+swap(x,y);			x, y are actual parameters			x and y are not swapped
+
+
+
+
+casting vs conversion
+--------------------------
+cast
+	conversion within same family of types
+
+numeric family
+	float to int		is a cast
+	int to float		is automatically cast
+
+int i=20;
+float f=i;			//java jdk 1.5 onwards, automatically cast
+
+f=2.5f;
+i=f;			//we must explicitly cast 			loss of precision happens here
+i is now holding only 2		//.5 is missing
+
+
+implicit and explicit cast
+
+a=b		a is the  target of assignment		b is the source
+
+		if the target is wider/ broader than the source, 		implicit casting
+		
+double d=2.54;
+float f=d;		//you are doing narrowing	explicit		WRONG
+
+float f=(float)d;	//this is explicit casting
+
+
+
+
+
+
+
+
+String to number		this is not casting. this is conversion
+
+
+
+
+operators
+OOPS
+	inheritance
+	abstraction			
+	encapsulation
+	polymorphism
+
+
+allowing users to focus on the essentials
+
+public members of the class provides abstraction
+
+encapsulation
+	hiding
+	convering or wrapping the 
+		data members
+		methods
+
+	private is used to hide
+	any non public access specifier
+
+
+	non public data members	encapsulation
+	public getters and setters	abstraction
+
+
+
+
+class:
+
+1) name must be a noun
+	Admission is a noun
+
+2) name must be in Pascal case
+	ArrayIndexOutOfBoundsException
+
+3) a class can have data members as non public 
+	private is preferrable
+
+4) whenever you have a constructor with arguments, it is always recommended to have a constructor without argument
+
+	a default constructor is always created by the compiler
+
+	if i create a constructor (without arguments) then it is a no-arg constructor
+
+
+
+	sometimes you create the object. Later you set the values.
+
+
+
+overloading
+overriding
+
+
+
+Overloading:
+---------------
+i am allowed to create multiple methods with same name
+
+there should be a difference:
+	number of arguments
+	order of the arguments	(not the name, but type)
+		int, float
+		float, int
+
+	type of arg
+		int
+		float
+
+if the return type of these methods are different or same, it does not matter
+
+
+int sum(int, int)
+float sum(int, int)		//NOT ALLOWED
+
+
+sum(2,3)		both of the above methods qualify. So this is not accepted
+
+
+
+Overriding
+-------------
+	same signature and same return type
+
+	the method in super class and method in sub class are having same signature and return type
+
+	the signature and return type can be covarient	(inheritance relationship)
+
+	sub class method cannot reduce the visibility. The overriding method cannot be less accessible
+		super class method is public. then the sub class method must be public only
+		super class method is protected, then sub class method can be public and protected
+	public > protected > default > private
+
+	the sub class method cannot introduce new exceptions		throws IOException (in case super class does not throw, then sub class cannot throw)
+
+
+
+
+class Car
+{
+	Car getInstance()
+	{
+		return this;
+	}
+}
+
+class SportsCar
+{
+	@Override		//not allowed
+	SportsCar getIntstance()
+	{
+		return this;
+	}
+}
+
+
+
+do not use sc.nextLine()	alone.
+
+
+whenever you use sc.nextLine() after a sc.nextInt()	or such
+
+if(x.equals("")
+{
+	x=sc.nextLine();
+}
+
+
+
+in code challenge and ICT
+
+every if condition, use {} even if it is single line	
+
+ensure that every method has only 1 return statement
+
+use variable to hold the value. finally return only once
+
+int x=50;
+if(true)
+{
+	x=20;
+}else
+{
+	x=50;
+}
+return x;
+
