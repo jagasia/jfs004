@@ -1,0 +1,183 @@
+Core Java
+-------------
+	udemy
+	tekstac handson
+
+
+Strings
+Exceptions
+Collections
+Threads
+JDBC
+Java 8 features
+
+
+Collections
+--------------
+	data structures
+		linked list, stack, queue, etc
+	Why did you learn such datastructures????	
+		because, you found Arrays are not sufficient in some situations.
+		i) when i do not know the size of the array in the beginning
+		ii) consequtive memory locations. Contigious. If we need to insert an element between 2 elements in an array, then we need to shift the elements to the right.
+
+		like a theatre. 		1 guy has sit in wrong location.	instead of 4, he has seated in 3 and every other guy followed him.
+		now one guy comes and claim that this is is mine.!		all of you shift to next seat
+
+		only homogenous data types of elements
+
+		an array can have elements of same type only.	 Agree. But is there any datastructure, that allows heterogenous type of elements?
+
+
+	Collection framework
+		List allows us to store objects of different types?
+
+
+I said, Yes, we can store different type of elements in an array. He asked how?
+	i said,
+		declare an array of type Object. And store any type of elements
+	
+
+Object []arr=new Object[10];
+		arr[0]=new Integer(10);
+		arr[1]="India";
+		arr[2]=12.2f;
+		arr[3]=new Employee();
+		//array is homogenous. Whatever you add, are automatically cast into Object type.
+		//finally, the array holds 10 objects.
+
+
+1.4
+
+ArrayList	=	ArrayList<Object>	
+
+x.add(10);
+x.add("India");
+
+
+struct
+
+Main reason, when we think Arrays have limitation
+	1) size must be known
+	2) contigeous memory
+	3) arrays can be primitives or object types. But collection classes in java are always reference type (object) or wrapper type
+
+in arrays:		i can create
+	int []arr=new int[10];
+in collections
+		i cannot create
+	ArrayList<int> arr=new ArrayList<>();		//NEVER allowed to use primitives
+
+	ArrayList<Integer> arr=new ArrayList<>();		//ALLOWED
+
+
+category of collections:
+
+Vector
+Hashtable
+	these are legacy classes, all legacy classes are synchronized.	Means, 2 threads cannot access them at a time. They are allowed 1 by 1
+
+List
+	ArrayList, LinkedList
+Set
+	HashSet, TreeSet, LinkedHashSet
+-----------
+
+Map
+	HashMap, TreeMap, LinkedHashMap
+
+	map is a 2 dimensional	
+		key-value pair
+
+	
+
+
+
+List
+-----
+	i) elements are stored in the same order in which they are added
+	Ordered		order does not mean asc or desc order. 	Order in which we add the elements
+
+	ii) allows duplicates	
+
+	Collections.sort() method works only for List
+
+Set
+-----
+	i) rejects duplicate entries.	if you add an element, which is already present, it is rejected.	NO ERRORS. no effect
+	ii) Unordered collection. I DO NOT AGREE.	
+		what is the order in which a set adds elements??????
+
+		HashSet
+			the order is based on hashcode() method
+		TreeSet
+			the elements are sorted		(based on Comparable / Comparator)
+		LinkedHashSet
+			Ordered
+	TreeSet is 	Sorted	=	asc or desc
+
+
+	After adding elements to a Set, we dont have sort method
+
+ABCDEF........
+
+	15th alphabet
+
+
+
+
+scalar types
+	String
+	Integer
+
+scalar means, single value
+
+ArrayList<Integer>
+	
+ArrayList<Employee>
+
+
+5-4=+1
+4-5=-1
+
+
+
+import java.util.Comparator;
+
+public class EmployeeIdComparator implements Comparator<Employee>
+{
+
+	@Override
+	public int compare(Employee o1, Employee o2) {
+		return o1.getName().compareTo(o2.getName());
+	}
+
+}
+
+
+
+Marker interface is an interface that do not have any abstract methods inside.		Ex: 	Serializable
+
+look at this above code? Do you see that an interface that has only 1 abstract method.
+
+Can we call it as "Functional Interface"
+	ex:
+		Comparable	"compareTo"
+		Comparator	"compare"
+		Runnable		"run"
+
+
+Whenever we need to implement a functional interface, we can use lambda.
+
+it is very simple that we need to give the logic/ code for that only 1 method
+
+
+add
+remove
+
+
+
+
+Map
+	put
+	get
