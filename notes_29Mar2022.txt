@@ -192,3 +192,56 @@ comparators can also be used in
 
 
 
+
+---------------------------
+Map
+	HashMap
+	TreeMap
+	LinkedHashMap
+
+
+
+key, value pair	=	entry
+
+a map is seen like an entry set
+
+Set of entries	where, every entry is a key-value pair
+
+HashMap is a hash set of entries
+
+behavior of a map
+	keys are set.	Keys cannot be duplicates.	How it behaves when we add a key which is already present, duplicate key????
+	it will update the value
+
+values??? can be collection but allows NULL, any number of NULL, duplicates, and anything of the type specified
+
+While creating a map, we specify the types for Key and Value
+
+
+get an input string from the user as a sentence
+	this is a sentence typed by me
+
+i want you to display the ouput as 
+
+t=3
+h=1
+i=2
+
+
+
+add an entry into a map
+	put
+
+get an entry using the key
+	get
+
+
+
+can i have null as a key?
+	Yes
+
+can i have 2 nulls as key?	NO it is duplicate
+
+
+UNIQUE
+	any number of NULL
