@@ -1,0 +1,138 @@
+Core Java
+------------
+	IO
+	MultiThreading
+	JDBC
+	Java 8 features
+
+Java 8
+	ArrayList<Integer> marks=new ArrayList<Integer>();
+	an interface can have non abstract (static, default) methods
+	Lambda
+	Stream API
+
+
+
+Lambda
+	->
+
+	this makes the implementation of functional interface, easier
+
+What is a functional interface?
+	an interface that has only 1 abstract method
+
+
+
+Generics
+	jdk 1.5
+	before 1.5, the collections were always Object type
+
+	ArrayList marks=new ArrayList();		jdk 1.4 or earlier
+	ArrayList<Integer> marks=new ArrayList<Integer>();			jdk 1.5 onwards
+	ArrayList<Integer> marks=new ArrayList<>();			jdk 1.7 onwards
+
+
+
+public interface Person {
+	void speak();
+	
+	static void walk()
+	{
+		System.out.println("The person walks");
+	}
+	
+	default void run()
+	{
+		System.out.println("The person runs");
+	}
+}
+
+//The above interface (person) is an example for Functional interface
+Other examples:
+	Runnable		(it has only 1 method called run())
+	Comparable
+	Comparator
+	Predicate
+	
+the implement of these functional interfaces can be very simple, using lambda
+
+
+public class Student implements Person
+{
+
+	@Override
+	public void speak() {
+		System.out.println("Student speaks");
+	}
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		Person.super.run();
+		System.out.println("Student also runs");
+	}
+	
+	
+
+}
+
+
+
+Stream API
+--------------
+	imagine, if you are allowed to query the collections, like SQL select statement
+
+	SELECT
+		WHERE
+		ORDER BY
+		GROUP BY
+
+	result of an expression, is used as input for next expression and that goes on
+
+	
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class StreamApp1 {
+
+	public static void main(String[] args) {
+		ArrayList<Employee> employeeList=new ArrayList<>();
+		employeeList.add(new Employee(5L, "Raja", 12135.50, "EEE"));
+		employeeList.add(new Employee(2L, "Abdul", 5342.50, "ECE"));
+		employeeList.add(new Employee(1L, "Zaheer", 46365.50, "Civil"));
+		employeeList.add(new Employee(4L, "Raja", 54555.50, "ECE"));
+		employeeList.add(new Employee(2L, "Abdul", 3834985.50, "EEE"));
+		employeeList.add(new Employee(3L, "Raja", 5995.50,"Civil"));
+		employeeList.add(new Employee(1L, "Zaheer", 1125.50,"ECE"));
+		
+		List<Employee> result = employeeList.stream()
+		.filter((t)->t.getDepartment().equals("EEE"))
+		.filter((t)->t.getId()<3)
+		.collect(Collectors.toList());
+		
+		for(Employee e:result)
+		{
+			System.out.println(e);
+		}
+	}
+
+}
+
+
+
+
+//for sorting
+		List<Employee> result = employeeList.stream()
+		.sorted((a,b)->b.getId().compareTo(a.getId()))
+		.collect(Collectors.toList());
+
+
+
+
+//group the employees by department and find the sum of salary
+
+SELECT DEPARTMENT, SUM(SALARY) FROM EMPLOYEE
+GROUP BY DEPARTMENT
+
