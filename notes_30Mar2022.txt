@@ -136,3 +136,276 @@ public class StreamApp1 {
 SELECT DEPARTMENT, SUM(SALARY) FROM EMPLOYEE
 GROUP BY DEPARTMENT
 
+
+-----------------------------------------------------------------------------------
+Java IO
+
+input output
+	input may not always refers to keyboard
+	input may be from any source
+		keyboard
+		mouse
+		files
+		network
+
+
+	output may not always refers to monitor
+		monitor
+		files
+		network
+
+File
+	is stored in storage	(secondary storage)
+	what is the difference between storage and memory
+
+
+File is in hard disk
+	if a program has to read from a file,
+	it cannot do directly from a storage.	It should be loaded into the memory as object. 
+addition
+
+when i load a file as an object in memory 
+	File is the class in java.io package
+		whose object can be used to represent a file as an object in memory
+
+
+
+//		File f=new File("D:\\Jag\\CTS\\JFS004\\atchaya");		//File class can be used to create object representation of a File / Folder (directory)
+		//					\n	\t		\\
+		//poor practice to give the absolute path of a file / folder
+		//because, when i move this project to some other computer
+		//GOOD to use relative path		sub folder/ file name
+		
+		
+//		File f=new File("atchaya.txt");
+//		f.createNewFile();
+		
+		File f=new File("d:\\jag");
+		//i can get the list of files and folders present in this location
+		String[] arr = f.list();
+		for(String s:arr)
+		{
+			System.out.println(s);
+		}
+
+
+
+
+File
+	createNewFile
+	
+
+File handling
+
+	read
+	write
+
+IO streams are seen as 2 types:
+	character			every character is 2 bytes in unicode format
+	byte/ binary		anything 		int, float, employee, String, Character
+
+
+file extension .txt means text file		character stream
+
+INPUT:
+	read operations
+
+	InputStream		all classes that are derived from InputStream, can read inputs in binary format
+	Reader			--do--			Reader	can read inputs in character format
+
+
+your answer can be text/ binary
+
+	FileInputStream			binary
+	FileReader				character
+	ObjectInputStream			binary
+	DataInputStream			binary
+	BufferedReader
+	BufferedInputStream			
+
+OUTPUT:
+	FileWriter				character
+	BufferedWriter			character
+	BufferedOutputStream		binary
+
+
+
+i want to write characters into a file
+	FileWriter
+
+i want to read all the bytes from a file
+	FileInputStream
+
+
+
+C:\Users\rjaga\Pictures\paratta.jpg
+
+	This file contains bytes.	(Can we call this file as a text file??		silly. NO, this is a binary file)
+
+
+what we are going to read from this file?
+	bytes 
+
+Task:
+	read all the  bytes from this file
+	create a new file in new location and write all bytes into the new file
+
+
+1) read all bytes as an array 
+	write all bytes into the new file
+
+2) read one byte from source
+	write that by into the destination
+	repeat until eof REACHED
+
+
+
+
+
+
+
+if i am writing 
+	bytes		FileOutputStream
+	character		FileWriter
+	primitive data	DataOutputStream		writeInt		writeFloat
+	Objects		ObjectOutputStream
+
+
+
+
+
+flush 		store
+	reflect the changes we have done in the object rep of the file into the storage
+
+	flush is called whenever close() is called
+
+	when program terminates gracefully, close() is called automatically
+
+swing
+applets
+frames
+	windows based projects
+	window is always open, then the file is not closed. UNLESS you use flush(), you will not see the data written into the file from other processes
+
+
+
+whenever, we want to maintain structured data (like a record)
+we use
+	ObjectOutputStream		
+	ObjectInputStream
+
+
+
+
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+public class App4 {
+
+	public static void main(String[] args)throws IOException {
+//		DataOutputStream dos=new DataOutputStream(new FileOutputStream("D:\\Jag\\CTS\\JFS004\\atchaya\\jag.dat"));
+//		dos.writeFloat(12.36f);
+//		dos.writeInt(10);
+//
+//		dos.flush();
+//		dos.close();
+//
+		
+		DataInputStream dis=new DataInputStream(new FileInputStream("d:\\jag\\cts\\jfs004\\atchaya\\jag.dat"));
+		
+		System.out.println(dis.readInt());
+		System.out.println(dis.readFloat());
+	}
+
+}
+
+
+
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+public class App3 {
+	public static void main(String[] args) throws IOException, InterruptedException
+	{		
+		FileInputStream fis=new FileInputStream("C:\\\\Users\\\\rjaga\\\\Pictures\\\\paratta.jpg");
+		FileOutputStream fos=new FileOutputStream("D:\\Jag\\CTS\\JFS004\\atchaya\\paratta2.jpg");
+		int data=-1;
+		while((data=fis.read())!=-1)
+		{
+			fos.write(data);
+//			Thread.sleep(10);
+		}
+		System.out.println("Completed");
+	}
+}
+
+
+
+
+
+
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+public class App2 {
+
+	public static void main(String[] args) throws IOException {
+		File f1=new File("C:\\Users\\rjaga\\Pictures\\paratta.jpg");
+		FileInputStream fis=new FileInputStream(f1);
+		int len=(int) f1.length();
+		byte [] data=new byte[len];
+		
+		fis.read(data);
+		fis.close();
+		System.out.println(len);
+		
+		//lets write the bytes to the new file
+		FileOutputStream fos=new FileOutputStream("D:\\Jag\\CTS\\JFS004\\atchaya\\roti.jpg");
+		fos.write(data);
+		fos.flush();
+		fos.close();
+		System.out.println("Pls check ");
+	}
+
+}
+
+
+
+
+
+import java.io.File;
+import java.io.IOException;
+
+public class App1 {
+
+	public static void main(String[] args) throws IOException {
+		
+		File dir=new File("d:\\jag");
+		
+		if(!dir.exists())
+		{
+			System.out.println("Location is not found. Creating now...");
+			dir.mkdir();
+		}
+		
+		File[] files = dir.listFiles();
+		System.out.println(files.length);
+//		for(File f:files)
+//		{
+//			if(!f.isDirectory())
+//			{
+//				System.out.println(f.getName());
+//			}
+//		}
+	}
+
+}
