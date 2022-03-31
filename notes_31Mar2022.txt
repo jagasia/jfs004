@@ -27,5 +27,59 @@ Serializable interface
 	is a marker interface	(means, there is no abstract methods inside this interface)
 
 
+Threads:
+----------
+How many threads were present in them?
+a) 0
+b) 1		*
+c) 2
+d) don't know
+
+Threads can be created by
+	extending Thread class
+	implemeting Runnable interface
 
 
+unpredictable order of execution of the threads
+
+methods of Thread class
+
+start()
+sleep()		milliseconds to make the thread sleep and continue after that
+join()		allows, the already running threads, to continue and finish, but makes all the others threads which have not started yet to wait
+
+
+
+when a thread enters a synchronized block or a synchronized method, it enforces a lock. 
+that lock prevents any other thread to enter that block
+
+Airport
+	security check
+
+	yellow line
+		if 1 person enters the yellow line, until he exits the next yellow line, nobody is allowed to enter that lane.
+
+if there is only 1 lane. we can see synchronization
+
+if there are 2 lanes, and there are 2 threads, you dont see a sync there
+
+if only 2 threads, access same objects then only we have sync
+
+StringBuffer		is sync		
+StringBuilder
+
+
+synchronized block & method
+
+influence that order based on "priority"
+
+priority does not work when a thread is sleeping
+
+
+sync
+	lock
+
+imagine t1 locks a block and inside the block it is waiting for t2 to release the lock
+t2 is actually waiting for t1 to complete
+
+dead lock
