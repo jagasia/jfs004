@@ -1,0 +1,31 @@
+java io
+threading
+jdbc
+
+
+IO
+	ObjectOutputStream
+	ObjectInputStream
+
+
+lets have a file employee.dat	
+this contains a collection of employee objects
+	TreeMap<Employee> stored in the employee.dat
+
+menu
+	1: Add Employee
+	2: Update Employee
+	3: Delete Employee
+	4: Display All Employees
+	5: Exit
+
+
+The process of writing an object to a stream is called as Serialization
+vice versa is de-serialization
+
+Serializable interface
+	is a marker interface	(means, there is no abstract methods inside this interface)
+
+
+
+
