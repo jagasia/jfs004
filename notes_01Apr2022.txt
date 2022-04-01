@@ -1,0 +1,99 @@
+JDBC
+--------
+	Java DataBase Connectivity
+
+JDBC api is layer between a java program and RDBMS		or datasources
+
+How is it possible?
+	for a java program to communicate with external RDBMS applications.
+
+
+
+	Driver
+
+there are lot of interfaces in JDBC api
+	Those DB vendors provide implementation of certain java interfaces
+
+those implementations are released as .jar files
+
+we learnt mysql and also oracle
+
+use JFS004;
+
+SELECT * FROM Branch;
+
+username: root
+password:
+
+
+How to add .jar file to a "java project"?
+	right click the project 
+		properties
+			java build path
+				3rd tab (Libraries)
+					Add External Jar
+						browse to the location where .jar file is present
+
+
+But, if you reference a jar file from any location, that would be poor practice.
+When i move this project from our computer to client's computer,
+we move the project folder. But jar file is not present in the project folder.
+SO, WE COPY the jar file first, to the project folder	(preferrably "bin" folder)
+
+
+
+steps for jdbc:
+	loading the driver	(modern versions of java does not mandate this)
+	obtain the connection with the databse using	(you are logging into the db now)
+		URL		ip address of the server, schema name
+		username
+		password
+
+	this obtained connection reference is used to do 
+		execute queries
+
+	close the connection 
+
+	deregister the driver	(not mandatory now)
+
+
+
+Statement			for executing simple queries		static query. The query is complete. 
+PreparedStatement		for parameterized queries		dynamic query. They depend on some values to replace parameters in the query
+CallableStatement		for calling stored procedures and functions
+
+
+
+
+
+execute		is used for any type of sql statement. But it will execute. But not produce/ return output
+executeQuery	is used for select query.  This method returens a ResultSet, using which we can navigate to each record at a time
+executeUpdate	is used for DML statements. This method returns int	(no of rows affected)
+
+
+Metadata
+
+main method
+------------------
+
+DAO pattern
+
+
+if the entity is Branch
+
+1) Branch.java		entity class
+2) BranchDao.java		data access code
+	CRUD
+		create, read, update, delete
+
+		addBranch
+		getAllBranches
+		findBranchById
+		updateBranch
+		deleteBranch
+
+
+
+
+ORACLE
+__________
