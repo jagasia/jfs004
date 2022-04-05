@@ -1,0 +1,170 @@
+What are the important activities for the day?
+	i) java, we have jdbc concepts
+		prepared statement, callable statement
+	ii) tomoro is our CC
+	
+
+
+write a jdbc code that will accept 2 inputs from the user (username, password) and the output should be "Login Successful" or "Login Failed"
+
+first, lets do this using Statement
+	
+What is meant by login successful?????
+	the user provides an username and password,
+	if that is matching with any of the rows in the user_master table, the we get 1 row as result.
+	if those username and password are not matching in any row, then we get 0 row.
+
+	if i get 1 row, then i declare Login as successful
+	if i get 0 row, then i declare Login as failure
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Scanner;
+
+import oracle.jdbc.driver.OracleDriver;
+
+public class App2 {
+
+	public static void main(String[] args) throws SQLException {
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter the username:");
+		String username=sc.nextLine();
+		System.out.println("Enter the password:");
+		String password=sc.nextLine();
+		OracleDriver driver = new oracle.jdbc.driver.OracleDriver();
+		Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","hr","hr");
+		Statement st = con.createStatement();
+		ResultSet rs = st.executeQuery("SELECT * FROM USER_MASTER WHERE username='"+username+"' AND password='"+password+"'");
+//		while(rs.next())
+//		{
+//			System.out.println(rs.getString(1)+"\t"+rs.getString(2));
+//		}
+		if(rs.next())
+		{
+			System.out.println("Login is successful");
+		}else
+		{
+			System.out.println("Login failed");
+		}
+		DriverManager.deregisterDriver(driver);
+
+	}
+
+}
+
+
+
+if i am a hacker, i will login to this system without even knowing the username or password.
+	using SQL Injection
+
+i will enter the following as input:
+anything' OR 1=1 --
+i dont know
+
+
+"SELECT * FROM USER_MASTER WHERE username='"+username+"' AND password='"+password+"'"
+SELECT * FROM USER_MASTER WHERE username='anything' OR 1=1 --' AND password='i dont know'
+
+Hence, we are not supposed to use Statement whenever the query is dynamically formed at runtime
+
+Solution:
+	use PreparedStatement
+
+
+
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Scanner;
+
+import oracle.jdbc.driver.OracleDriver;
+
+public class App2 {
+
+	public static void main(String[] args) throws SQLException {
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter the username:");
+		String username=sc.nextLine();
+		System.out.println("Enter the password:");
+		String password=sc.nextLine();
+		OracleDriver driver = new oracle.jdbc.driver.OracleDriver();
+		Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","hr","hr");
+//		Statement st = con.createStatement();
+//		ResultSet rs = st.executeQuery("SELECT * FROM USER_MASTER WHERE username='"+username+"' AND password='"+password+"'");
+//		while(rs.next())
+//		{
+//			System.out.println(rs.getString(1)+"\t"+rs.getString(2));
+//		}
+		PreparedStatement st = con.prepareStatement("SELECT * FROM USER_MASTER WHERE username=? AND password=?");
+		st.setString(1, username);
+		st.setString(2, password);
+		
+		ResultSet rs = st.executeQuery();
+		if(rs.next())
+		{
+			System.out.println("Login is successful");
+		}else
+		{
+			System.out.println("Login failed");
+		}
+		DriverManager.deregisterDriver(driver);
+
+	}
+
+}
+
+
+CREATE OR REPLACE PROCEDURE PRC1 
+(EID EMPLOYEES.EMPLOYEE_ID%TYPE, SAL OUT EMPLOYEES.SALARY%TYPE)
+AS
+BEGIN
+SELECT SALARY INTO SAL FROM EMPLOYEES WHERE EMPLOYEE_ID=EID;
+END;
+
+
+
+
+DECLARE
+ EID INT;
+ SAL INT;
+BEGIN
+ EID:=100;
+ PRC1(EID, SAL);
+ DBMS_OUTPUT.PUT_LINE(SAL);
+END;
+
+Now, How can you call this procedure from jdbc program?
+	hint:	use CallableStatement
+
+
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.SQLType;
+import java.sql.Types;
+
+import oracle.jdbc.driver.OracleDriver;
+
+public class CallableDemo {
+
+	public static void main(String[] args) throws SQLException {
+		OracleDriver driver = new oracle.jdbc.driver.OracleDriver();
+		Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","hr","hr");
+		CallableStatement st = con.prepareCall("{ call PRC1(?,?)}");
+		st.setInt(1, 100);
+		st.registerOutParameter(2,Types.INTEGER);
+		st.execute();
+		int salary = st.getInt(2);
+		System.out.println(salary);
+		con.close();
+	}
+
+}
