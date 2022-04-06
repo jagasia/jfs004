@@ -1,0 +1,27 @@
+Handson of design patterns grading
+	IMO it is completed
+
+Everybody has got their java code challenge enabled
+
+------------------------------------------------
+1) String split method
+	i) you are using regex to split
+		problem when you split an ip address		192.168.0.2
+		str.split(".");			. is not a character. it is a symbol in regex. . means anything
+		str.split("\\.");			here, \ in regex treats next char as a character than a symbol
+	ii) after splitting, you get an array of strings		entire list is stored in an array
+2) StringTokenizer
+	i) split by character		NOT by regex
+	ii) you can loop for 1 portion at a time. 	RATHER than storing entire result in an array
+
+
+
+int i;
+String str;
+
+i=sc.next();
+str=sc.nextLine();		//here only you have problem
+if(str.equals(""))
+{
+	str=sc.nextLine();
+}
