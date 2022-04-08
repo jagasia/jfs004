@@ -1,0 +1,44 @@
+lets create a flow for solving the problem:
+
+1) download the skeleton
+	we get a zip file (archive)	(not sure)
+2) once downloaded, it will  show you the location where it is download. 
+3) if it is zip, it is better to extract
+	and ensure that you copy only the folder that contains "src"
+
+	import a folder that contains directly "src"
+4) how to import
+	eclipse
+		File-> Import -> General -> Existing project to workspace
+5) script.sql
+	we can run this script in sql work bench
+	(drop the database before ict)
+6) DBHandler.java
+	understand the db.properties file (what is the variable name for driverclass/ url/ username/ password
+		FileInputStream?
+		ResourceBundle?
+			anything is fine. But practice this.
+	get connection 
+7) entity class
+	getters and setters
+	one business method will be there (calculate kind of)
+	do that
+
+8) Business method
+	1) validate
+	2) a method that accepts FilePath and returns a list of entities
+	3) a method that accepts List and either adds those list of entities to the db table. or select query
+	4) main method to test your methods you have code
+
+
+bad comments
+	any java code, you comment it strike it
+multiple return statement is bad
+unclosed connection is bad
+Scanner is not closed is bad			sc.close();
+variables declared but not initialized
+	String input="";
+	double max;		//is bad
+variable declared but not used.		//is bad
+
+
