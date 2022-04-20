@@ -1,0 +1,72 @@
+employee as a bean
+	id
+	firstName
+	lastName
+
+		as dependencies
+
+
+XML configuration
+Annotation configuration
+
+
+i am going to give you a demo for having multiple possible dependencies for a bean that can be autowired 
+
+class Car
+	audio
+
+
+define every entity class as a bean
+so that we can define the relationship
+
+
+Car
+JBL
+Sony
+Pioneer
+
+
+define all of these classes as bean in your configuration
+
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns = "http://www.springframework.org/schema/beans"
+   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="car" class="com.cts.hrms.apr_19_autowired.Car">
+		<constructor-arg name="audio" ref="sony" />
+	</bean>  
+	
+	<bean id="jbl" class="com.cts.hrms.apr_19_autowired.Jbl">
+	</bean> 
+   
+   <bean id="sony" class="com.cts.hrms.apr_19_autowired.Sony">
+   </bean>
+</beans>
+
+
+
+What is autowiring?
+	whenever there is a dependency/ dependencies, if you want the spring IOC container to inject the needed dependencies itself, it is called autowiring
+
+	byName
+	byType
+
+
+configuration by annotation
+	@Qualifier
+		we can specify which implementation needs to be injected
+
+
+while we use annotation configuration,
+	we use a class as a configuration class
+
+
+in xml configuration, we use
+	<bean> tag to define a class as a bean
+
+in annotation config:
+	i) @Bean				can be used on a method only (a method that returns an instance)
+	ii) @Component			can be used on the class itself
+

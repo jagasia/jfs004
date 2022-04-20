@@ -1,0 +1,155 @@
+stage 2
+	1 code challenge
+	1 ICT
+
+Maven
+Junit
+Code quality
+	SonarQube		
+Spring core
+Spring AOP
+Spring MVC		(spring boot)
+
+
+list to be converted into reverse order
+
+ListIterator it=marks.listIterator(marks.size());		//this moves the list iterator to the end of the list initially
+
+//	while(li.hasNext());		//moved it to the end
+
+hasPrevious()
+	previous()
+
+when we submitted this solution in hackerrank, it said, the program took more time than expected. NOT ACCEPTED
+
+Stage 2 demo:
+------------------
+Maven
+	what is maven?
+		build tool		
+
+		IMO, a build tool is very useful that
+		even without an IDE, i should be able to work
+
+	right click you project in eclipse, and go to compiler, change the compiler level (if your jdk is 16, you can choose version 8 or 11 or anything upto 16)
+	jar / war
+
+	in cmd prompt
+		maven, allow us to do all these things using cmd line CLI
+
+	build
+		compilation
+		.jar file/ .war file/ .ear file
+	
+
+	i am not adding .jar files into my project
+		during JDBC, mysql-connector.jar		or 		ojdbc6.jar
+
+	jar files always increase the size of the project.
+	so when i push the project to GIT/ cloud, size of the project also matters
+
+	when i add jar files to my project,	
+		every project will have a copy of the jar files.
+
+
+	managing jar files means, when version changes
+		remove and add only specific jar files from the build path
+
+
+	you are creating a project in eclipse	
+		dynamic web project
+		java project
+
+	each project has some template.
+		without eclipse how to obtain that template?
+	maven has lot of project archetypes
+
+Lab setup:
+-------------
+	what is installing maven???????
+		there is no installer
+
+	download maven
+		download apache maven	(for windows, ZIP file)
+		unzip to a folder
+			C:\Program Files\Apache Software Foundation
+
+	and set environment variable to this location
+
+
+		path		C:\Program Files\Java\jdk1.8.0_281\bin		is appended
+		JAVA_HOME	C:\Program Files\Java\jdk1.8.0_281
+
+
+	WHAT are the environment variables to be created for maven?
+
+		M2_HOME
+			C:\Program Files\Apache Software Foundation\apache-maven-3.6.3
+
+		M2
+			C:\Program Files\Apache Software Foundation\apache-maven-3.6.3\bin
+			%M2_HOME%\bin
+		append to the
+		Path	
+			%M2%
+
+
+	CMD
+		mvn -version
+
+		
+---------------------------------------------------
+Lets create our first maven project 
+	
+	File	
+		New
+			maven project
+
+different archetypes	(each archetype  is a project template)
+
+for core java project:		quickstart
+for web app		webapp
+
+	group id	com.cts.hrms			.	.	.
+	artifact id	user-service			-	-	-
+	package name
+
+
+
+Repository
+
+
+Task:
+	create a "quickstart" archetype maven project
+	run the project
+
+
+pom.xml
+	Project Object Model
+	this represent a metadata or configuration or build information about the project
+
+	java version
+	build type		.jar/ .war
+	dependencies
+		jar files
+
+
+maven has a centralized repository of all the jar files
+
+	you want a mysql connector jar??
+		there is a maven dependency
+
+https://mvnrepository.com/
+	is the central / remote repository of jar files
+	
+
+now, in our system, computer, we have a local repository also
+
+Whenever a project, pom.xml adds a dependency,
+	that jar file is downloaded to local repository (only if that jar file is not present in the local repository)
+	
+	where is this local repository?
+		c:\users\<<username>>\.m2
+
+
+

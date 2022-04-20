@@ -1,0 +1,261 @@
+Agenda for the day:
+1) DS & Algo hackerrank assessment on 20-Apr-2022
+2) Maven installation is over
+	there is no handson for maven in teckstac
+	but there is a udemy video
+3) Learn spring core
+
+-------------------------------------------------
+Spring core
+	what is spring?
+
+EJB 3.0		annotations than xml configuration
+	Enterprise Java Beans
+
+	when a programmer creates a project,
+		he takes care only of the business rules
+
+	scalability
+		life cycle management
+		is the ability to adapt to growing or reducing needs	
+	transaction
+	security
+	persistence
+
+	like these are some of the services, common to any project
+
+	EJB provides separation of 
+		application specific services		(programmer will do)
+		generic services
+
+
+
+	Container
+		provides the generic services (configurable)
+
+
+EJB was rigid and very complex to implement
+	EJB is tough like winter
+
+They wanted to find a better framework which is derived from EJB
+	Spring season
+
+
+Spring Framework
+	spring core
+	spring aop
+	spring mvc
+	spring rest
+
+	all of them can be done using spring boot also
+
+
+
+Core Java
+	in eclipse
+		java project
+	
+	maven
+		quickstart
+
+
+What is Spring?
+-------------------
+	How it is going to help me?
+		i told about generic services
+
+	creational patterns
+		how the objects of a class are created????????
+
+	if we create an object using "new" operator, then we are responsible for the scalability of the application
+
+5 computers
+	does that mean, for a day, only 5 people can use the center?
+	NO.	different times, different people may utilize the systems.
+	
+	it is more than 5 for sure.
+
+
+
+there is pool of intances
+	100 objects created
+
+	100 users access our application. There is no problem
+
+	101st user access our application,
+	now, if there is no space to allocate memory for the 101st user
+
+	scalability issue
+
+	what does, EJB do, the same the Spring also does
+
+	construction		100
+	passivation		
+		store the instance state in a secondary storage device and remove / free that instance
+
+	activation
+		create an instance, and fill the user instance state back from secondary storage
+	destruction
+
+Process management
+
+1/
+2.5 * 1024*1024*1024
+
+	
+
+1) not creating an object of a bean using "new" operator
+	so how do you get instance of a bean???????
+
+	configure the class as a bean
+
+	and obtain the bean instance using
+		getBean method
+
+
+Dependency Injection
+
+
+class Car
+{
+	Engine engine;		//tigthly couple		i cannot change engine of the car
+	Sony sony;			//tightly coupled
+}
+
+class Car
+{
+	Audio audio;		//loosely coupled
+
+	public Car()
+	{}
+
+	public Car(Audio audio)
+	{	
+		this.audio=audio;			// constructor based injection
+	}
+	
+}	
+
+
+Car swift=new Car(new JBL());		through constructor, i have injected the dependency (audio) to the car
+
+Car has a dependency
+
+
+class Sony	implements Audio	//audio
+{
+}
+
+class JBL	implements Audio	//audio
+{
+}
+
+
+How can we inject a dependency to a class?
+	setter based injection
+	constructor based injection
+
+
+
+
+
+class Car
+{
+	Audio audio;		//loosely coupled
+
+	void setAudio(Audio audio)
+	{	
+		this.audio=audio;			//setter based injection	
+	}	
+}	
+
+
+
+
+Spring IOC container			container is a special JVM
+	when there is a dependency, (audio)
+	and when there exists a bean defined as JBL (implements Audio)
+	spring will tend to inject the most appropritate dep (if we specified Autowired annotation)
+
+IOC
+	Inversion Of Control
+
+demo:
+
+	1) create an mvc project and add the following dependency (for spring core)		.jar files are added using mvn dependency
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>4.3.10.RELEASE</version>
+		</dependency>
+	2) create a class and
+package com.cts.hrms.entity;
+
+public class Employee {
+	private Integer id;
+	private String firstName;
+	private String lastName;
+	
+	public Employee() {}
+
+	public Employee(Integer id, String firstName, String lastName) {
+		super();
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	@Override
+	public String toString() {
+		return "Employee [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + "]";
+	}
+	
+	
+}
+
+	3) define the class as a bean in xml configuration
+
+	4) in main method (App.java)
+		getBean from ioc container
+
+
+
+I am not creating the object of bean. I am getting an instance from the instance pool that the spring IOC container has created initially
+
+This becomes insignificance at this point of time, because, a bean is defined by default as a singleton bean. That means, there exists only 1 instance of the bean
+
+
+A bean is singleton by default. If you want to change, it can be changed to "prototype"
+
+
+in my bean.xml, i have used <property> so that i am using setter based injection
+
+use
+	 <constructor-arg></constructor-arg> 
+
+for constructor based injection
+

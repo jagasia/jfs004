@@ -1,0 +1,134 @@
+20-Apr-2022 Wednesday agenda:
+1) Spring AOP
+2) Assess Type 2: Datastructures - Final Check
+	preparation
+	readiness (means, you have to complete the submission)
+	grade the submission.
+3) 
+
+
+Left rotation	doing
+Sparse
+array manipulation
+
+
+
+Spring AOP
+--------------
+Aspect Oriented Program
+	handle the cross cutting concerns
+
+i have a spring core project
+	there is a method
+
+	now, i want to log when the method begins and method ends
+
+	transaction should begin before the method and end after the method
+
+	authenticate before a method is called
+
+something which i do not want to modify the method, but to handle across the method
+
+Logging
+Authentication
+Transaction
+
+in bean method itself, we can do that
+
+
+public void addNumbers()
+{
+	//do the logging here		
+	...	
+	....
+	...
+	...
+	//do the logging here
+}
+
+but i do not want to modify the method for 
+	logging
+	auth
+	tran
+
+these cross cutting concerns usually are handled by a separate team
+
+before
+during
+after
+
+terminology of AOP
+
+	Aspect			(ex:	Logging)		will contain the advices
+	JoinPoint		is the point in which the bean method and the advice meets
+	Poincut expression
+		uses symbols to 		(* means all)
+			specify a pattern, whichever method matches that pattern will be advised by this aspect
+
+	Advice
+		before Advice
+		After advice	
+
+
+ATM		ICICI bank atm, 	ICICI card		
+	withdraw
+		validate card
+		validate pin
+		check if enough funds available in ATM machine
+		--do--			in a/c
+		check if the transaction entry is successful
+			dispense cash	(withdraw method)
+
+what is my advice?
+	before
+		you call the withdraw method, there are some rituals to be followed
+
+
+
+cannot ask somebody whoever calls my "withdraw" method to follow something. 
+	rather, we allow them to call "withdraw" method, but before, after things can be done by us.
+
+
+dependencies:
+	aop
+	aspectj
+			
+
+
+    <dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-context</artifactId>
+    <version>5.2.7.RELEASE</version>
+</dependency>
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-context-support</artifactId>
+    <version>5.2.7.RELEASE</version>
+</dependency>
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-aop</artifactId>
+    <version>5.2.7.RELEASE</version>
+</dependency>
+<dependency>
+    <groupId>org.aspectj</groupId>
+    <artifactId>aspectjrt</artifactId>
+    <version>1.9.5</version>
+</dependency>
+<dependency>
+    <groupId>org.aspectj</groupId>
+    <artifactId>aspectjweaver</artifactId>
+    <version>1.9.5</version>
+</dependency>
+
+
+
+
+lets create a logging aspect
+
+i create a separate class for Logging
+	define this class also as a bean
+
+===============================================
+AOP Demo:
+---------------
