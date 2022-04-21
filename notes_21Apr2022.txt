@@ -1,0 +1,142 @@
+21-Apr-2022
+
+1) Final check for datastructures
+2) Spring AOP
+	XML configuration based AOP
+	Annotation configuration based AOP
+3) Spring Jdbc
+	JdbcTemplate
+		RowMapper
+
+@Aspect
+
+@Component("logging")
+class Logging
+{
+	@Pointcut(execution(* com.cts.*.*.*(..))
+}
+
+
+Spring jdbc:
+   <dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-context</artifactId>
+    <version>5.2.7.RELEASE</version>
+</dependency>
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-context-support</artifactId>
+    <version>5.2.7.RELEASE</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-jdbc</artifactId>
+    <version>5.2.7.RELEASE</version>
+</dependency>
+		<dependency>
+			<groupId>com.oracle.ojdbc</groupId>
+			<artifactId>ojdbc8</artifactId>
+			<version>19.3.0.0</version>
+		</dependency>
+<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java 			use 8.0.23 for your mysql version 		-->
+<dependency>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+    <version>5.1.47</version>
+</dependency>
+
+
+
+
+
+
+
+Dao pattern
+	all the code that access database are written inside a Dao impl class
+
+	Dao interface
+	DaoImpl as class
+
+
+entity class
+	mapped to a table in the db
+
+select * from employee
+
+	ResultSet rs=st.executeQuery();
+
+while(rs.next())
+	rs.getInt(1)
+
+
+we need to map a result set row into an object of Employee
+
+
+if there is a table called EMPLOYEE in db,
+then there should be a class called Employee (entity class)
+
+
+CRUD
+	create	-	adding a row
+	read	-	finding a row
+	read	-	get all rows
+	update	-	update a row
+	delete	-	delete a row
+
+to get a connection
+	driverClassName		com.mysql.jdbc.Driver
+	url			jdbc:mysql://localhost:3306/jfs004
+	username			root
+	password			
+	
+
+to provide these information, 
+	i) xml configuration
+	ii) annotation configuration
+
+
+
+JdbcTemplate
+	spring-jdbc dependency has this class
+
+class JdbcTemplate
+{
+	private DataSource dataSource;
+}
+
+i am going to define 
+	DriverManagerDataSource
+as a bean in my bean.xml
+
+and inject this dependency to jdbctemplate
+
+
+
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<beans xmlns = "http://www.springframework.org/schema/beans"
+   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:p="http://www.springframework.org/schema/p"
+   xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="dmds" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/jfs004" />
+		<property name="username" value="root" />
+		<property name="password" value="" />
+	</bean>
+	
+	<bean id="jt" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dmds" />
+	</bean>
+
+</beans>
+
+
+
+When i run select query, i will get result set
+	a row in rs, is to be mapped to an object of Branch class
+
+so i need to define a row mapper
