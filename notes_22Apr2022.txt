@@ -1,0 +1,71 @@
+22-Apr-2022
+----------------
+1) JUnit
+2) CC on 5-May-2022
+
+semester exam
+	11-May
+
+
+JUnit
+	for unit testing
+
+Types of tesing:
+-----------------
+	black box
+	white box
+	functional testing
+	glass box
+	unit testing			every unit (method) is tested separately
+	integration testing		even if every unit has passed the test, sometimes, while they interact with each other, they may fail
+	regression testing		after the bugs are fixed, testing the units again for side effects of the bug fix
+	stress testing		
+
+Unit Testing
+---------------
+
+TDD
+	Test Driven Developement
+	
+	code to fail
+	rework on the code to pass
+	refactor the code
+
+testing team works even before we start coding
+
+use case
+	test case
+
+sum
+	2, 3, 5
+	10, 20, 30
+
+we have to add junit jar to our project
+if maven,
+	dependency
+
+Annotations
+
+
+@Test
+	marks a method as a unit test method
+
+@Before
+		setup the test bed
+		AUT		Application Under Test
+		SUT		Software Under Test
+
+		create an object of the class
+		get instance
+
+		inital values
+@After
+		tear down
+
+
+@BeforeClass
+
+@AfterClass
+	can be used on a static method only
+	these methods are executed only once for all the test methods available
+
