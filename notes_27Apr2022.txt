@@ -1,0 +1,142 @@
+Spring boot MVC
+----------------------
+	diff between spring and spring boot
+		spring boot works on the spring framework
+
+	i) convention over configuration
+		we do not need to configure lot of things in spring boot because, it assumes if you follow conventions
+	ii) POJO environment for creating web components
+		in servlet, a servlet class is not a POJO class. there is a super class. there are methods already defined like doGet
+	iii) spring boot is like a java application
+		you have a main method to start with
+	iv) spring boot provides built in apache tomcat server
+	v) spring boot provides a starter project
+		start.spring.io
+			spring initializr
+	vi) spring boot provides starter dependencies
+		lot of dependencies are grouped together as starter dependency
+			slf4j logger is a part of basic starter dependency		spring web
+	
+an mvc project
+	i) controller
+		without a controller, you cannot even show hello world
+
+		jsp, i need to display some result (sql query produces some n records. so the jsp should display n rows in a table)
+		 before i call jsp, i am supposed to call a servlet
+		
+		in spring mvc, first, the requests are receiveed by the servlet only. 	servlet will decide which jsp to be shown. if required, it will be able to get records from the table and show the jsp
+		servlet is called Dispatcher servlet. this is already there in spring framework
+
+jsp
+	view
+
+servlet
+	controller
+
+since we use spring boot, we do not write servlet.
+
+servlet, there is only 1 servlet, that is Dispatcher servlet already there, and acts as a front controller
+
+we will have controller classes with annotations 	url
+
+Spring boot MVC
+	minimal steps to create a spring boot MVC project
+
+steps:
+1) create a project using spring initializr
+	jar/war?			war		because, this is a web application.		we have JSP
+	
+	create a spring boot project
+		jar
+		java
+		maven
+		11
+	
+2) choose the dependencies
+	spring web
+
+
+3) notice
+	application file
+		main method
+
+	@SpringBootApplication
+		@SpringBootConfiguration
+			@Configuration
+
+4) application.properties
+	configuration file for spring boot application
+
+
+--------------------
+5) in application.properties		(specifiy the location where my views are present)
+	
+
+	whenever i say "index", it means the 
+		/WEB-INF/views/index.jsp
+
+	create the folders and put an index.jsp file there
+
+6) create a controller class
+
+import org.springframework.stereotype.Controller;
+
+@Controller
+public class MyController {
+
+}
+
+
+any urls we type in browser/postman, will be received by the dispatcher servlet, and ds will look for that url in the controller methods
+
+http://localhost:5000/
+
+
+o.s.w.s.r.ResourceHttpRequestHandler     : "Path with "WEB-INF" or "META-INF": [WEB-INF/views/index.jsp]"
+
+apache tomcat is not associated with the project
+
+
+--------------
+1) create spring boot appln
+	spring web
+2) pom.xml
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-jasper</artifactId>
+		</dependency>
+3) application.properties
+	server.port=5000
+
+	spring.mvc.view.prefix=/WEB-INF/views/
+	spring.mvc.view.suffix=.jsp
+
+4) create the folders under "webapp"
+	and create the jsp files there
+
+5) create a controller under the base package (or as its sub package)
+	@Controller
+
+	method to be annotated as @GetMapping
+
+	this method returns "index" means, 
+		WEB-INF/views/index.jsp		(prefix and suffix applied)
+
+6) run the project.	next time onwards, restart the project
+	
+7) go to browser
+	http://localhost:5000
+
+
+------------------------------------------------------
+lets see how to add 2 numbers
+
+
+
+http://localhost:5000/?no1=2&no2=3
+
+	query string / url re-writing
+
+
+
+

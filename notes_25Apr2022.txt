@@ -1,0 +1,121 @@
+junit, mockito, sonarqube
+servlets & jsp
+spring boot mvc
+
+junit
+------
+	exceptions and parameterized testing
+
+input vs output
+	when the inputs are given, we do not expect an output, but we expect and exception.
+	an exception is expected there.
+
+	annotation
+		@Test(expected=ArithmeticException.class)
+10 tests
+	we can choose to run specific category of test
+	ignore some of the test methods
+		@Ignore
+
+
+Parameterized test
+	an arraylist of possible inputs and outputs
+
+
+
+
+	int no1, no2, result;
+	
+	public MathsTest(int no1, int no2, int result)
+	{
+		this.no1=no1;
+		this.no2=no2;
+		this.result=result;
+	}
+
+
+Mockito
+	Mock
+		dummy
+
+	while testing a specific method, we may consume resources
+
+	result of the service i am calling can be either 0 or 1
+	true/false
+	success/failure
+
+	we do not want to do a real transaction
+
+	so what we do,
+		we will create a mock of the real serviced
+		when 2,3		then 5
+		when 10,20	then 30
+
+dependency for mockito
+
+	mock method can used to create a mock of the real class
+	when then
+	when
+	
+
+code quality
+	continuous improvement for the programming
+	
+package is not used
+	default package is discouraged
+if
+	{}
+variable declared must be initialized
+
+code which is commented
+
+Sonar qube
+	test our code for quality
+
+	metrics
+		bugs
+		code smell
+
+	estimate the time required to fix those bugs
+
+java 11
+	installed
+	env var should be set
+
+in pom.xml
+	java 8
+
+https://www.sonarqube.org/success-download-community-edition/
+
+1) in pom.xml
+	<plugin>
+  <groupId>org.sonarsource.scanner.maven</groupId>
+  <artifactId>sonar-maven-plugin</artifactId>
+  <version>3.7.0.1746</version>
+</plugin>
+
+<plugin>
+	<groupId>org.jacoco</groupId>
+	<artifactId>jacoco-maven-plugin</artifactId>
+	<version>0.8.1</version>
+</plugin>
+
+
+2) in pom.xml
+	inside properties
+
+<properties>
+       <java.version>1.8</java.version>
+       <maven.compiler.source>1.8</maven.compiler.source>
+       <maven.compiler.target>1.8</maven.compiler.target>
+</properties>
+
+
+
+2) build the application in maven		run as maven build		and in goals:
+	clean org.jacoco:jacoco-maven-plugin:prepare-agent install
+
+3) create the application in sonar portal
+
+
+mvn sonar:sonar -Dsonar.projectKey=jfs004-sonar-demo-1 -Dsonar.host.url=http://localhost:9000 -Dsonar.login=5a138801af286b5789fd0e8a6f03c62cb46bc1b0

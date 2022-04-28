@@ -1,0 +1,133 @@
+Servlet, JSP 
+Spring boot MVC 
+-------------------------------------
+
+Before spring was introduced, how did we develop a web application (using java server side scripts)
+
+for client side scripting, we used javascript.
+
+for server side, we used "Servlets & JSP"
+
+they run on a server.
+	ex for server:
+		there were lot of web servers but they were not capable for providing a run time environment for java programs
+		app servers (web app server) provide not only storage for web pages, but also they provide run time env for servlets and jsp
+
+	sun java app server
+	glass fish
+	apache tomcat server
+	weblogic
+	websphere
+
+dynamic web applications (using java)
+	apache tomcat server
+
+before downloading, check what are the versions supported by eclipse/ sts
+
+download:
+https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.62/bin/apache-tomcat-9.0.62-windows-x64.zip
+
+maven project
+	arche type:		webapp
+normal project
+	dynamic web project		(like "java project" for core java)
+
+after creating a maven "webapp" archetype project
+	right click the project
+		targeted runtimes
+
+
+
+Servlet
+	a java program that runs in server
+
+scriplet
+	applet		runs in browser	(browser support is required)
+	servlet		runs in server and produces output that can be displayed in the browser (browser does not need any plugins)
+	midlet		mobile interface device let		
+
+JSP
+	JSP page is converted into servlet at runtime
+
+both servlets and JSPs are web components
+	that are executed by a special JVM called as web container
+
+
+
+
+
+
+spring allows me to create pojo classes
+Plain Old Java Object
+
+	servlet is not a pojo class
+
+in spring
+	Dispatcher servlet	already been created 	
+
+	this will receive any request and call the suitable method of your POJO class
+
+
+
+
+request		HttpServletRequest
+response		HttpServletResponse
+
+session		HttpSession
+application		ServletContext
+
+MVC 
+	Model		
+		Customer.java		define the data		data definition		create table
+		CustomerDaoImpl.java	access the data		create, read, update, delete	DML
+	View
+		index.jsp		product.html (thymeleaf framework)
+	Controller
+
+
+Model
+	any code that
+		defines data
+		access data
+
+View
+	input		<form>
+	output		
+
+Controller
+	servlets		in spring?????		we dont create servlets
+	code that 
+		allows views to access model from anywhere in the world
+
+		web component
+
+spring mvc
+	web.xml
+	spring-servlet.xml
+
+lot of configurations
+	
+
+spring boot mvc
+	no need for xml configuration
+
+spring vs spring boot
+-------------------------
+	spring boot is "convention" over "configuration"
+
+	we follow conventions, then we don't need to configure
+
+ex:
+	in spring
+		ComponentScan(basePackage="")
+
+	in spring boot,
+		we dont need to define this, if we create all classes under base package/ its sub package
+
+
+the way we create the project itself is different
+	spring boot project
+		is created from start.spring.io			
+
+	starter project
+

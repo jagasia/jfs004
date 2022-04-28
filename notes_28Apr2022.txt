@@ -1,0 +1,42 @@
+a controller method can return
+	i) view name/ model and view object
+	ii) we can modify that return value to a value, rather than view	
+		@ResponseBody
+
+@ResponseBody annotation used on a method in controller, marks that the return value is not a view name
+
+model
+	any code that defines data		Data definition
+	any code that access data		Data manipulation
+
+
+entity class		Employee.java			ORM		Object Relational Mapping
+
+Employee
+	id
+	firstName
+	lastName
+	salary
+
+FORM
+	capture inputs from the user
+
+form also understands the model
+the form will be automatically converted into an object of employee
+
+@RequestMapping
+	for any http method
+
+
+JSTL
+	JSP Standard Tag Library
+
+	Spring forms library
+		custom tags library
+
+	
+
+@RequestMapping
+	@GetMapping
+	@PostMapping
+
