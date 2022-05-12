@@ -1,0 +1,83 @@
+spring data jpa
+
+findById
+	is there in jpa
+findByLastName
+	there is no such method
+
+for such application specific requirements, we may sometimes have to write queries.
+
+Not SQL query, but JPA QL
+EJBQL
+HQL
+JPAQL
+
+In all these querying languages, we do not write query on the table. 
+
+select * from EMPLOYEE;		//this is SQL
+select e from Employee e;		//this is JPAQL
+	Notice, Employee is the spelling of the class. not the table	
+
+@Entity
+@Table(name="EMP)
+public class Employee
+{
+
+
+
+@Repository
+public interface StudentRepository extends JpaRepository<Student, Integer>
+{
+	@Query("select s from Student s where s.lastName=:ln")
+	public List<Student> findStudentsByLastName(@Param("ln")String lastName);
+}
+
+
+
+
+group by
+order by
+distinct
+
+we can write our own queries in jpa repository using @Query
+
+select firstName from .......
+
+public String
+
+
+public List<String>
+
+@Data
+class Output
+{
+	String firstName;
+	String lastName;
+
+}
+
+@Query("select firstName,lastName from....
+select List<Output> findMethod
+
+------------------------------------
+Relationships
+
+Employee
+Department
+
+
+One Department has Many Employees
+
+One To Many
+
+Many To Many
+
+
+@OneToMany
+
+Whenever an anotation ends with "Many", jpa will create a new table. TO PREVENT THAT, use "mappedBy" attribute
+
+
+
+
+

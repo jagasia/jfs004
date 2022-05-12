@@ -1,0 +1,73 @@
+Spring boot MVC
+	bootstrap
+	JSTL			JSP Standard Tag Library
+	JSR 349 validations
+
+@ModelAttribute
+
+
+bootstrap 	pending
+
+
+while calling a controller method using url, 
+in the url itself, we can append some information
+
+
+	http://localhost:5000/abcd?key1=value1&key2=value2
+
+	@RequestParam
+
+	http://localhost:5000/abcd/{id}
+
+	@PathVariable
+
+JSR
+	Java Specification Request
+	Java Service Request
+
+
+validation rules can be set in the entity class itself
+
+
+
+1) add the following dependency to pom.xml
+			<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>6.0.13.Final</version>
+		</dependency>
+
+2) in entity class use validation annotations on the properties
+public class Employee {
+	
+	@Min(value = 1)
+	private Integer id;
+	@Size(min = 3, max = 10)
+	private String firstName;
+	private String lastName;
+	private Double salary;
+
+
+3) in controller, when we receive the object, use 
+	@Valid
+		right before the model object that needs to be validated
+
+4) in that argument list (parameters list), the last argument must be BindingResult
+
+
+is-invalid	(in bootstrap 4) is equivalent to 
+has-error	(in bootstrap 3)
+	these classes can change the border of the textboxes to red
+
+displaying error message
+	alert-danger
+
+
+
+
+model
+	Home.java
+		put the annotations
+			@Component
+			@Min
+				rent
