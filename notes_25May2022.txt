@@ -1,0 +1,68 @@
+REST
+	REpresentational State Transfer
+
+Spring boot application
+	it was .war	(for mvc project)	view
+	now for REST, it would be .jar		only model and controller
+
+rest api as a back end processing
+react as front end
+
+customer
+menu
+order
+
+Customer.java	entity
+CustomerRepository.java		interface that extends JpaRepository
+CustomerService.java			autowire the repo
+
+
+
+react + rest api integration
+
+signup form in react
+submit then it will call rest api	
+
+
+swagger/ post man
+
+rest api is complete
+
+
+signup	
+login	user object			Welcome Raja!
+
+CREATE
+READ
+UPDATE
+DELETE
+READ
+READ(ID)
+
+<div>
+	<Menu />
+	col 1
+	col 2
+</div>
+
+
+
+
+
+menu
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">WebSiteName</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="#">Page 1</a></li>
+      <li><a href="#">Page 2</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    </ul>
+  </div>
+</nav>

@@ -1,0 +1,38 @@
+Spring Boot REST
+-------------------------
+
+SPRING BOOT APPLICATION
+
+@RestController
+
+
+	@GetMapping
+
+
+very simple step when compared to MVC Project
+	1) prefix, suffix,
+	2) create 	WEB-INF/views/
+	3) add jsp files / HTML (in case of thymeleaf f/w)
+	4) @Controller
+	5) Validations		@Valid		
+
+in rest api
+1, 2, 3 are not required
+
+Instead of @Controller, we use @RestController
+
+that means, every method in the controller class, does not return a view. It returns the response body
+
+@Component
+@Repository
+@Service
+@RestController
+
+
+same as mvc, you create
+	@Entity
+	@Repository
+	@Service
+	@RestController
+
+in MFPE, this is your back end

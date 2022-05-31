@@ -1,0 +1,137 @@
+REST
+-------
+	REpresentational State Transfer
+
+before 2001
+	what was the scenario?
+
+Applications were developed in different programming languages, running in different platform, were not able to interoperate.
+
+Interoperability
+-------------------
+
+a java program cannot access a visual basic program
+
+for interoperability, software vendors like Microsoft, Oracle, IBM, Sun Microsystems
+
+we need a web standard for interoperability
+
+the ability for a program to call another program through internet
+
+the programs can be developed in different language
+
+XML as a standard for information interchange
+
+xml (199)
+
+BUT in 2001 SOAP was introduced
+
+SOAP
+	Simple Object Access Protocol
+
+SOAP messages were sent and received from  webservices.
+
+Webservice (2001)
+	SOAP webservice uses HTTP so a soap web service run in any platform anywhere in the world. Can be accessed by any program running in any platform (program written in any language).
+
+Mobile No-------------------------
+Message----------------------------
+	Send SMS
+
+
+how will i send sms. I cannot write code for that, because, i am not the owner of that service.
+
+If they offer a web service, we can call that web service, then that webservice will send the sms.
+
+
+SOAP was very successful, but
+	SOAP supports only XML format 		call method and send  arguments, send in xml format. receive a response, in xml format
+	it does not JSON
+
+2001
+	service oriented architecture		SOA
+
+	SOAP
+
+Microservices
+-----------------
+	SOAP provides URL for entire service.
+		lot of methods or even classes are combined to gether in one project. That entire project has an URL
+
+	but microservice, provide one URL per method.
+
+
+	REST has replaced SOAP
+
+SOAP web service	vs	RESTful Web service
+
+
+Task:
+-------
+	Identify the difference between SOAP and REST
+
+REST principles
+
+	single responsibility pattern.		Every url or http method is meant for 1 responsibility
+	unified interface			http://jag.com/employee
+
+	GET		http://jag.com/employee		return all employees
+	GET		http://jag.com/employee/20		return employee whose id is 20
+	POST		http://jag.com/employee		add an employee
+	PUT		http://jag.com/employee		modify an employee
+	DELETE		http://jag.com/employee/20		delete an employee
+
+
+SOAP
+	documentation 		WSDL
+
+REST
+	by design there is no documentation. But we use Swagger to generate a documentation
+
+
+Task:
+	Identify the rest principles
+
+
+----------------------
+Implementation
+
+
+frameworks provide REST implemenation
+	Jersey
+	Spring
+	
+
+we learn Spring boot
+
+Spring REST is more complicated than Spring boot REST
+
+
+in Spring REST
+	web.xml	configuration file
+	spring-servlet.xml	configure the dispatcher servlet
+
+in Spring boot REST
+	zero configuration required for REST
+	Even in mvc project, we configure the prefix, suffix in application.properties, but for REST, we dont even require that
+
+
+Demo:
+	1) create a spring boot app		(spring initializr		start.spring.io)
+	2) while creating, choose
+		.jar
+		java
+		version 8
+		dependencies:
+			spring web
+	3) annotate the controller class with 
+		@RestController		(in mvc, we used @Controller)
+			@RestController = @Controller + @ResponseBody
+
+
+
+
+
+
+
+

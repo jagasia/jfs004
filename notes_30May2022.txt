@@ -1,0 +1,91 @@
+Spring security
+------------------
+
+REST api is created by 1 enterprise
+VIEW/ UI/ Front end can be created by many enterprises
+
+	INOX
+
+Book tickets online
+INOX created a website inox.com
+
+database
+rest api
+
+now, can you believe, we can book tickets for inox theatre from
+	book my show app also?????
+
+inox creates a db only once
+	they create a REST api only once
+
+but how many people create front end for that????????
+ how do you trust them and how do you allow them to access your api methods (that makes transaction)
+
+can we ask them to write their own authentication code?????
+
+	never
+
+rest api to have security
+
+separates the roles of security and the dveloper
+
+in my controller, i will  not be writing the code for authentication.
+
+it is a cross cutting concern.
+
+Parallely some layer is created
+
+JWT
+
+Before we go in details. Lets start understanding security f/w with demo
+
+Basic demo:
+---------------
+	whenever we add "security" dependency in pom.xml, what happens?
+
+
+spring data jpa
+	when you add this dependency in pom.xml, what happens?
+		without configuring the url, username, password, etc it is not possible to run our project
+
+spring security has auto configuration
+	it will generate a random password
+
+
+SecurityAutoConfiguration
+
+
+a password is generated (see in console) 
+user name is "user"
+
+
+spring.security.user.name=jag
+spring.security.user.password=atshay
+
+
+Demo
+
+configure my application so that it will validate the login using code
+
+implements WebSecurityConfigurer		(interface)
+extends WebSecurityConfigurerAdapter		(class)		an adapter is an empty implementation of an interface
+
+
+
+1) Entity
+	User.java
+2) Repository
+	UserRepository
+3) Service
+	UserService
+4) Configuration
+	MyConfiguration
+5) Controller
+	MyController
+
+
+
+
+return new User(username, password, new ArrayList<>());
+
+User is an implementation of UserDetails

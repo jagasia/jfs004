@@ -1,0 +1,70 @@
+why router is required?
+	usually, we give link to a page.
+	but in reacgt, we need to give link to a component
+	so, we need to define a path and map that path to a component
+
+	
+install router:
+	npm install react-router-dom --save
+
+index.html:
+	
+import React from 'react';  
+import ReactDOM from 'react-dom';  
+import { Route, Link, BrowserRouter as Router } from 'react-router-dom'  
+import './index.css';  
+import App from './App';  
+import Blog from './blog'  
+import Services from './services'  
+const routing = (  
+<Router>  
+<div>  
+<h1>Routing</h1>  
+<Route path="/" component={App} />  	comment this line
+<Route exact path="/" component={App} />
+
+<Route path="/blog" component={Blog} />  
+<Route path="/services" component={Services} />  
+</div>  
+</Router>  
+)  
+ReactDOM.render(routing, document.getElementById('root'));
+
+
+url
+	http://localhost:3000/		this is app component
+	http://localhost:3000/blog	this is blog component
+	http://localhost:3000/services	this is services component
+
+
+lets create link buttons in the home page:
+
+import React from 'react';  
+import ReactDOM from 'react-dom';  
+import { Route, Link, BrowserRouter as Router } from 'react-router-dom'  
+import './index.css';  
+import App from './App';  
+import Blog from './blog'  
+import Services from './services'  
+const routing = (  
+<Router>  
+<div>  
+<h1>Routing</h1>  
+<ul>  
+<li>  
+<Link to="/">Home</Link>  
+</li>  
+<li>  
+<Link to="/blog">Blog</Link>  
+</li>  
+<li>  
+<Link to="/services">Services</Link>  
+</li>  
+</ul>  
+<Route exact path="/" component={App} />  
+<Route path="/blog" component={Blog} />  
+<Route path="/services" component={Services} />  
+</div>  
+</Router>  
+)  
+ReactDOM.render(routing, document.getElementById('root'));

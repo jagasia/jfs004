@@ -1,0 +1,116 @@
+MFPE
+	frontend
+	backend
+
+Front end
+	React js
+
+Back end
+	spring rest api
+		entity
+		repository
+		service
+		controller
+			get, post, put, delete
+
+from react js, we will access the back end
+
+Security
+	how do we authenticate the users and allow them to further access any of our rest api methods?
+
+JWT
+	when an user logs in successfuly, they are provided with a token	(valid for certain period.	our choice	10 hours)
+	the token must be used by the user, in subsequent method calls
+
+	JSON Web Token
+		because, the token usually is a json string that has
+		{token:something}
+
+	token is an encrypted text	
+		what is hidden inside the token
+			validity time
+			user details
+
+A controller is a POJO version of a servlet.
+			
+How do we implement this?
+
+1) all requests received by the REST api, are filtered by Jwt filter
+	the filter can be configured to allow only certain urls (without authentication)
+		login, signup
+	these urls must be allowed for anyone
+
+2) login method should return jwt token on successful authentication. Login failure means, only a status is returned
+
+3) subsequent access from the frontend, must use the jwt token in the header
+	"Authorization" header should contain
+Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYWciLCJleHAiOjE2NTIzMTY5MzUsImlhdCI6MTY1MjI4MDkzNX0.C2la5v0vPjVIi8DdiWo1UsiltQqKFIcgwlL39ax_RCM
+
+4) how do the rest api capture the token, and check if the token is valid and unexpired??????
+	we need to have a jwt util class that has methods for this
+
+		create token
+		generate token
+		validate token
+		extract username from the token
+
+what are the new things?
+	JwtFilter
+	JwtUtil
+
+
+dependency
+	jjwt
+
+5) WebSecurityConfigurerAdapter
+	we should override some methods
+	we should define some beans
+
+	what are the urls allowed free (without authentication)
+		.permitAll()
+		.cors()			
+		.and()
+		.jsrf
+
+Cross Origin Resource Sharing		if this is not enabled, then our rest api cannot be accessed from react js	(any app running in different port)
+
+in our controller
+	@CrossOrigin(origins={"http://localhost:3000/","*"})
+
+JSRF attack
+
+
+
+we create a rest api and test it in post man
+---------------------------------------------------
+then we create a react js app and login to rest api and obtain the jwt token and store it in localStorage
+in subsequent calls, we taken the token from localStorage and use it in the authorization header
+
+
+
+To receive username and password from client, we can create a type
+
+@Data				//lombok dependency in pom.xml	and java version is 11
+@AllArgsConstructor
+class AuthRequest
+{
+	private String username;
+	private String password;
+}
+
+
+public void login(@RequestBody AuthRequest authRequest)
+
+
+
+response also can be a user defined type
+
+{data:lksjdflkdsjflksjdflksdjflsdflk}
+
+
+
+{
+    "jwt": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYWciLCJleHAiOjE2NTQwMDYyOTMsImlhdCI6MTY1Mzk3MDI5M30.0_XV39q3SsLYm4mMqU6v2zjsTKFqOLAZ7gs20IunkW0"
+}
+
+

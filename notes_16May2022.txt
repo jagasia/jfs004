@@ -1,0 +1,101 @@
+16-May-2022
+-----------------
+React
+	What should we Install now for React?
+		we have to install node js
+
+
+now, we have downloaded and installed the node js
+	cmd 
+		node -v
+v16.14.0
+
+
+nodejs also includes npm
+
+we will  use npm to install many other softwares like
+	react
+	bootstrap
+	ts
+	axios
+
+--------------------
+
+What is the need for Reactjs
+	we need to create front end
+
+HTML
+CSS
+Javascript
+bootstrap
+
+They we not component based / Object oriented approach
+
+login
+	what is login
+
+		html form which has text boxes,  buttons, labels, etc
+		js code that accepts input and calls the api
+		css/ bootstrap styling
+
+	all these together is a Login Component. But in reality, these are just lot of files
+
+suppose, i am placing the login component in first column of the bootstrap row
+
+suddenly we need to move to third column.
+	What we do?
+		cut lot of code in html? and paste in in another location?
+
+	difficult to manage.
+
+we need a component based approach, so that i can easily manage the application
+
+modules
+	component
+		html, css, js
+
+
+npm install -g create-react-app
+
+npx create-react-app first-project
+
+every react app will have a "node_modules"
+
+after creating the project
+	go inside the project folder
+		cd first-project
+			code .		(opens the current project folder in visual studio code)
+			npm start		(to run the project)
+
+
+We are developing SPA
+	Single Page Application
+		the entire project is a single page. Home page
+		if suppose, there are lot nav/menus	
+			about us
+			contact us
+			Products
+			Categories
+
+	each can be a separate component.
+	you can show them in the app component
+
+app component is the root component.
+
+Other components can be plugged in the app component
+
+
+A component can be created in two ways:
+	class based component
+	function based component
+
+
+for bootstrap
+	npm install bootstrap
+
+go to index.js
+	
+
+all the components may be placed in "Components" folder
+
+<Login input="abcd">

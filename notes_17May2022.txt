@@ -1,0 +1,56 @@
+React Js
+-----------
+have learnt to create a project
+we create components in two ways:
+	class
+	function
+
+functions inside a class based component?
+how to make those functions as event handlers?
+
+props
+	arg for constructor
+
+	constructor(props)
+	{}
+
+	are a meant for sending input to the component.
+
+	<LoginComponent />
+	<LoginComponent color="red" backgroundColor="blue" />
+	
+		props.color			will give us "red"
+		props.backgroundColor	will give us "blue"
+
+	props are read only. one way, a parent component can send input to the child component using props.
+	
+state
+	is internal to the component.
+	in a component, there can be lot of functions/methods
+	across these functions we can use the state
+
+	suppose, if i send this component to a rest api, this goes like an object.
+
+	state is preserved across events/ function calls
+
+	it is not read only
+	it is not an input from parent
+	
+	in constructor, we can declare a state as an object			JSON		{"key1":"value1", "key2":"value2"}
+
+	we can update the state
+
+
+
+npx create-react-app may17-first
+
+
+
+
+render()
+{
+	return <div>
+		everything else should be inside this container
+	</div>
+
+}

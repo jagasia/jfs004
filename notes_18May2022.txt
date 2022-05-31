@@ -1,0 +1,65 @@
+React Js
+----------
+	created a react app
+	created components
+	state vs props
+	functions and event handling
+	
+Services
+--------------
+	Remember the spring boot apps we created for MVC project?
+	service classes provide business logic
+		ex:
+			CRUD		
+
+Suppose, in a project
+	front end
+	back end
+		this back end would be usually a REST api	(you will learn rest api soon)
+		rest api, is a spring boot app
+
+Front end
+	should be able to call the REST api (backend)
+
+
+Lets see how our react app is able to access a REST api.
+
+we can take some of the rest apis available in internet.
+
+https://api.instantwebtools.net/v1/airlines
+
+	read()		returns all the airlines
+	read(id)		returns 0/1 airline 
+
+
+JSON
+	JavaScript Object Notation
+	{"id":"1","name":"Jag Airlines"}
+
+	{id:"1",name:"Jag Airlines"}			this is object in javascript
+
+	JSON.stringify();			converts the object into JSON string
+	JSON.parse();			converts the json string into an object
+
+
+
+How can a react app access REST API?
+	axios
+
+install axios
+	npm install axios
+
+
+any call to rest api, returns a promise.
+
+A promise is an async method call.
+
+the output comes any time. may not be immediately
+
+and our program will proceed
+
+
+lifecycle methods of a react component
+
+init
+destroy

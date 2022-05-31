@@ -1,0 +1,513 @@
+React
+conditional rendering
+	either
+
+
+MFPE
+	abstract
+	backlog
+
+
+1 email for Abstract for 1 cohort
+	attach all the abstracts	(file name is revealing		cohort code, pod # also project name)
+
+	Rep 
+
+1 email for PB for 1 cohort
+
+	attach all  the pb
+
+to me, cc to coaches
+
+-----------------
+Hands on
+-------------
+
+
+1) create a spring boot app
+	java
+	version
+	jar/war			(a rest api is .jar)
+	dependencies
+		spring web
+		spring data jpa
+		mysql driver
+2) instead of @Controller, use @RestController
+
+	no need for "prefix", "suffix"
+	no need to create WEB-INF/views folder/ jsp files NOT REQUIRED
+
+3) all other things
+	@Entity
+	@Repository
+	@Service
+	@RestController
+
+4) Rest controller
+	autowire the service
+
+	create methods 
+		@GetMapping		=>	@RequestMapping(method="GET"
+	you can use request mapping also. NO problem
+
+test them in post man
+
+5) under @RestController annotation, use
+	@CrossOrigin(origins={"http://localhost:3000","*"})
+
+	this will allow, our rest api to be accessed from given urls
+
+
+
+---------------------
+Validation
+
+Cloud
+	What is cloud?
+
+Answers from our participants:
+		computing through internet
+		remote server where we can store data
+		network of servers connected using internet
+		used to store data
+		network, storage, multiple resources from any platform
+		pay as you go
+		
+	
+The following are the broad category of services offered by Cloud:
+	Computing
+	Storage
+	Networking
+
+
+Paradigm shift in the IT industry.
+	Earlier, we were delivering products to the clients.
+	Now, we are providing services to the clients.
+
+
+Infrastructure as a Service
+Platform as a Service
+Software as a Service
+
+
+MS Office
+	Word, Excel, Powerpoint, etc
+
+if i sell a product, (ms office), the customer will pay you once.
+this product is vulnerable to piration.
+
+
+There is Office 365
+Microsoft 365	is the new name 
+
+office.com
+	This is also MS Office, but not a product but a service
+
+This is cloud model.
+
+match the following
+
+OnePlus vs Airtel
+
+
+which is product and which is service?
+
+Airtel is providing service
+OnePlus is selling product
+
+
+product vs service
+
+service is scalable 
+	means, 
+		You need more? you subscribe more.
+
+	ability to provision according to our need
+
+5 Gb
+10 Gb
+2 Gb
+
+Technically,
+
+Product has limitations
+Service have more advantage
+
+product once delivered, is detached from the seller
+
+service is up to date
+
+In MS Office, if you buy a CD/DVD
+
+new features???? the product is not aware of new features
+
+
+Cloud
+--------
+	You focus on your application development related areas.
+	Cloud service providers take care of the all other areas.
+
+
+I am good in angular & java.
+I can develop a website using these technologies
+
+But i am not good in infrastructure.
+
+After developing the web app, we need to deploy it in server
+
+I am not good in networking/ server architectures.
+
+Cloud service provider will take care of infra structure.
+
+Cloud gives that luxury that you take care of your core business area
+
+
+
+Cinema industry
+--------------------
+
+How to allow audience to book ticket online?????
+
+they will not do this. 
+
+BookMyShow app
+
+
+
+Microsoft
+	Azure
+
+Google
+	GCP
+
+Amazon
+	AWS
+
+These are giant cloud service providers
+
+
+	Computing
+	Storage
+	Networking
+
+
+
+They allow us to store our files in the central repository
+	Storage cloud
+		google drive
+		github
+		dropbox
+
+	i have my own virtual space
+
+adv
+	i can access my folder using any device
+		i didn't bring my laptop. But this cloud, i can access from my mobile. I can access from any computer (connected to internet)
+
+i have done a project in spring boot/ servlet/ jsp
+if i upload this into my storage cloud, then it cannot run there.
+	you can download
+
+Git
+	has storage. But programs does not run at git.
+
+
+storage is enough for sharing files/ folders or central repository
+
+
+----------------------
+
+Compute cloud
+	not only storage service. but the cloud server is capable of running the applications or provide Runtime environment for the applications
+
+domain hosting package
+	free doman name registration	
+		jagindia.com
+	space
+		30 Gb
+
+when i upload html, css, javascript files
+	it works fine
+
+index.html		becomes home page
+
+Problem started when i uploaded my .war file
+
+.war means, web archive ie., dynamic web project
+
+servlets, jsp are server side scripts that run in server
+
+my server was incapable of running java 
+
+apache tomcat server
+
+AWS
+	EC2
+		Elastic Compute Cloud
+
+
+Elasticity
+	Elastic Scalability
+	
+what is the difference between Scalability & Elasticity?
+	Scalability		(with given/ fixed infrastructure)
+		is the ability to adapt to growing or reducing needs
+			need more? subscribe more
+	Elasticity
+		is scalability by privisioning or deprovisioning infrastructure
+
+
+if your phone has the capability to increase RAM or memory card, then it is elasticity
+sometimes, Server computers have the provision to add hard disks
+
+Mainframes allow adding more processors
+
+
+-----------------------
+Task:
+What is IaaS?
+https://azure.microsoft.com/en-us/overview/what-is-iaas/
+	not only for development, mostly for deployment
+	0 down time
+
+Identify and tell
+
+What is PaaS?		compute
+https://azure.microsoft.com/en-us/overview/what-is-paas/
+	development environment for creating softwares
+
+What is SaaS?
+https://azure.microsoft.com/en-us/overview/what-is-saas/
+	office 365
+	zoho books
+		accounting software
+------------------------------------------------------------------------------------------------------------
+
+Javascript & Jquery 
+-------------------------
+type of questions
+	1) a code will be given. You should predict the output
+		space matters
+		2 answers look alike. But notice there is a space difference
+	2) which of the following true
+		which of the following is NOT true
+	
+
+in javascript, 
+	space, tab, new line all these are ignored
+	; is optional
+
+you are familiar with 
+	document.getElementById
+you can answer one question
+
+When all answers look like same,
+compare 1st and 2nd answer
+	there will be a difference
+	only 1 is correct another is wrong
+compare 2nd and 3rd
+do this same way
+
+Where do you put javscript code?
+
+HEAD
+BODY
+STYLE
+DIV
+SPAN
+P
+
+which company invented javascript?
+
+which datatype is not supported in javascript?
+
+what type of language is javascript?
+
+in javascript
+	document.getElementById("txt1").value="India";
+in jquery
+	instead of value what we use?
+		val()
+
+in jquery which symbol is used?	
+	$
+
+in javascript
+	.style.backgroundColor="blue:
+in jquery
+	.css("background-color","yellow");
+
+how will you hide an element in jquery?
+	.hide()
+
+
+$(this).hide();		//means, current element is hidden
+
+<span>india</span>
+
+how to make this span background color blue
+
+jquery is based on which language?
+
+can we make jquery stop for some time?
+	delay()
+
+
+when i compared javascript and jquery yesterday
+i show an example for ajax
+
+
+function loadDoc() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("demo").innerHTML =
+      this.responseText;
+    }
+  };
+  xhttp.open("GET", "ajax_info.txt", true);
+  xhttp.send();
+}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("button").click(function(){
+        $.ajax({url: "demo_test.txt", success: function(result){
+            $("#div1").html(result);
+        }});
+    });
+});
+</script>
+
+
+for ajax, jquery uses
+	$.ajax method
+
+	ajax
+
+
+ternary operator symbol
+
+in javascript,
+we used a method to add or remove elements to an array
+	Splice
+
+onclick
+onblur
+onfocus
+onchange
+onerror
+	whenever error is occurred
+
+
+you know getElementById
+but there are other methods also
+
+getElementsByName		plural	elements
+
+getElementsbyTagName()
+			
+
+Task 1:
+
+var quiz=[1,2,3];  
+var js=[6,7,8];  
+var result=quiz.concat(js);  
+document.writeln(result);"
+
+
+
+function range(int javascript)
+{
+ int a=5;
+ for(int i=0;i<javascript;i++)
+ {
+  console.log(a);
+ } 
+}
+range(3);
+
+
+
+
+var js = 0;
+while (js < 10) 
+{
+     console.log(js);
+     js++;
+}
+
+
+
+
+<p id="demo"></p>
+<script>
+function javascript() 
+{
+// javacript abs() method
+    document.getElementById(""demo"").innerHTML = Math.abs(-7.25);
+}
+</script>"
+
+
+
+
+function sanfoundry(javascript)
+{
+ return (javascript ?  “yes” :  “no”);
+}
+ bool ans=true;
+console.log(sanfoundry(ans));"
+
+
+
+
+
+
+int a=1;
+if(a!=null) // JavaScript not equal to Operators
+    return 1;
+else
+    return 0;"
+
+
+function compare()
+{
+    int num=2;
+    char b=2;
+    if(a==b)
+        return true;
+    else
+        return false;
+}
+
+
+
+
+
+<p id=""demo""></p>
+<script>
+var js = 10;
+js *= 5;
+document.getElementById(""demo"").innerHTML = js;
+</script>"
+
+
+
+"What will be the output of the following Javascript code?
+    var string1 = ""Letsfindcourse"";
+    var intvalue = 30;
+    alert( string1 + intvalue );"
+
+
+
+
+"Consider the code snippet given below
+  var count = [1,,3];
+What is the observation made?"
+
+undefined
+
+
+
