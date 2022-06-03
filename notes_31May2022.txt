@@ -114,3 +114,39 @@ response also can be a user defined type
 }
 
 
+------------------------------------------
+Morning, we have completed the security jwt part of back end 
+and tested the same with postman.
+
+in postman,
+	we provided username & password and sent as a json (authRequest) to login method
+	we obtained the jwt token
+
+	and used the token in other method calls.
+
+React js
+---------
+create 3 method calls to rest api
+	i) login
+	2) home
+	3) about
+
+while calling login, we send an object that contains 
+	username
+	password
+
+what we get is the token, we immediately store the token in localStorage
+
+when calling
+	home
+	about
+we will use the token in the "Authorization header" in the format:
+	Bearer laksdnjflksdjfksdjfoksejfokdn
+
+CORS
+	Cross Origin Resource Sharing
+
+
+jwt: "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqYWciLCJleHAiOjE2NTQwMjI3NDUsImlhdCI6MTY1Mzk4Njc0NX0.NSc4sa_bU3Cd6VQmV5KwPeEhMAEBYIXAt0hJ3FfqecU"
+
+

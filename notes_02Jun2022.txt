@@ -1,0 +1,111 @@
+Microservices
+----------------
+Learning objectives for microservices
+	Eureka server and client
+	Zuul
+	Docker
+
+Identify the difference between a monolithic application and microservices architecture based application
+
+MS Excel
+	single application that provides
+		Frontend, Backend
+		Model, View, Controller
+		Application Layer, Business Layer, Data Layer
+
+
+3rd stage
+	MVC project
+		this is also a monolithic in a way, because, it is 1 project that has everything
+		suppose, if the server is down, totally, everything is down
+
+now, consider a real life scenario
+	BookMyShow application
+
+while making payment, 	
+	credit card gateway is facing network failure, so it may suggest you other payment services
+	lazypay
+	debit card
+	UPI
+
+everything may be different micro service
+	one is down, then we may try another
+
+	or when you update/ repair one service, it may not affect other services from running
+
+inox server itself is down,
+	you may not be able to pay from bookmyshow/ ticketgoose/ inox app itself
+
+That means, we need to split the single application into multiple parts
+	that include multiple microservices
+
+An application can have multiple REST apis
+
+every rest api can become a microservice
+
+web service vs micro service
+
+in micro service, we provide 1 url per web method
+
+i can control, when client is allowed to access which are all the microservices
+
+Lot of challenges
+	user service
+	product service
+	customer service
+	sales service
+	feedback service
+
+
+sales service,
+	sales is nothing without a product or customer
+	only when customer and product comes into one point, there is a sale
+
+
+Customer.java		entity
+Product.java		entity
+
+now, use these classes in the Sales microservice also
+
+but
+	Customer.java
+		will not have @Entity, @Id annotations none of the annotations will be there. 	Just a class to define a type
+	There will not be 
+		CustomerRepository		NO. it is available ONLY in the customer service
+		CustomerService		NO
+		CustomerController		NO
+
+			these are all present in their respective microservice only
+
+
+Eureka Server and client
+Zuul
+Feign client
+
+
+
+you can create 1 spring boot application and mark it as eureka server			8761	
+and every microservice will mark themselves as eureka client
+
+server provides a control panel, where you can see what are all the microservices UP and running.
+
+1) create a spring boot application and add dependency
+	eureka server
+2) go to the application.java main method class
+	below @SpringBootApplication
+	@EnableEurekaServer
+
+
+-----------
+1) Create a microservice.	(Rest api)
+	create spring boot application		
+		spring web
+		eureka discovery client
+2) go to application class
+	add annotation	@EnableEurekaClient
+
+3) server.port=8383
+spring.application.name=account-service
+eureka.instance.hostname=localhost
+eureka.client.serviceUrl.defaultZone=http://${eureka.instance.hostname}:8761/eureka/
+server.context-path=/account

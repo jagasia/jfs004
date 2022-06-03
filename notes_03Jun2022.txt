@@ -1,0 +1,162 @@
+You have completed KBA for Spring REST
+Learning microservices
+	Eureka server and client
+	Docker
+
+You are going to install Docker in your system now.
+https://docs.docker.com/docker-for-windows/install/
+
+You have installed 
+	docker
+	wsl update
+
+now you check in cmd
+	docker -v
+
+------------------------------------------------------------
+Docker is useful for container orchestration.
+
+Scenario:
+	Have your seen a situation where, you create a project, test it in a computer.
+	When you move this project to another computer, you face some issues.
+
+	what might be the reason
+
+So, there are something missing or different in the target computer
+	OS	differences
+	jar files	missing
+	system files missing		dll		msvbvm60.dll
+	platform	different
+
+these are all deployment issues
+
+Docker provides solution for this deployment issues by 
+	creating a virtual image of the runtime env package the project inside that environment
+
+Docker image
+	env we create that contains not only the application, but all everything that is required to run that application
+
+CD	compact disk
+DVD
+Blue ray disk
+
+CD is mounted in a CD drive 
+	we can play the movie
+	we can install s/w that are present in the cd
+
+but many times, we have 1 CD, shared by multiple people.
+	we created an image	ISO image that can be stored in a computer
+	anytime, you want to load CD, you dont need CD. 
+	if you have ISO image, you can mount it in a virtual drive and play as if you have mount a CD in drive.
+
+
+image
+	application
+	all the env that is required to run that application
+
+Docker image
+
+The idea is, we create a docker image of our application		(spring boot application)
+
+the client / customer wants to see your project running in their computer.
+They have java??????	they have apache tomcat??		they have windows?????
+DOES NOT MATTER.
+	They have Docker?????? in their computer.	ENOUGH	
+	That is enough. 
+		I will send a docker image. Run that in your computer. It will run.
+
+I have not installed java in a computer
+But i have installed Docker in that computer
+
+You can run docker image	(while running, the image creates a container) 
+
+Docker Image			is a static thing like a file or program
+Docker Container			is a running instance of an image. 		Process 	
+
+
+
+Virtualization
+----------------
+	Virtual PC
+	VMWare
+
+How does Docker differes from Virtual PC or VMWare?
+	Virtual PC or VMWare are heavy weight
+	because, they create a virutal OS itself.
+
+Docker
+	we dont pack the entire OS in the image.
+	we pack only the portions of OS and the other necessary lib to run our application
+	it is light weight.
+
+You have installed docker.
+Lets see a magic
+
+somebody has already created a docker image and pushed it to a remote repository.
+	is it git hub?
+
+	no it is docker hub
+
+hub.docker.com
+	all of you sign up to this
+
+1) running an existing docker image from hub.docker.com
+
+in28min/todo-rest-api-h2:1.0.0.RELEASE
+
+docker run 
+	command to run an existing image		(it will run from local image repository only)
+
+so if you run a remote image, it will pull that image to your local repository
+and then it will run
+
+docker run -p 5000:5000 in28min/todo-rest-api-h2:1.0.0.RELEASE
+
+http://localhost:5000/hello-world
+
+
+--------------------------
+You have installed Docker
+and able to run a docker image from hub.docker.com
+
+Now, we will learn to deploy our spring boot application in docker
+means, we will create a docker image of our own application
+secondly, we will push the docker image to hub.docker.com
+There are 2 ways we can create a docker image of a spring boot application
+1) using Dockerfile
+2) without docker file and using spring command
+
+
+if the application is not spring app, then use docker file only
+
+lets create a spring boot rest api "jfs004-demo-1"
+
+
+command to find all the docker containers running in our system
+	docker ps
+	docker container ls
+	docker ps -a		(all. Even invisible containers will be listed)
+
+command to find the list of docker images in your local system
+	docker images
+	docker image ls
+
+to remove docker container 
+	docker rm container_id
+	docker rm container_id -f
+
+in hub.docker.com
+	jagindia/jfs004-demo-1
+
+
+For creating a docker image of our own application:
+1) add a Dockerfile to the project
+2) go to cmd in the location where Dockerfile is present
+	i) create docker image
+	ii) create a repository in hub.docker.com
+	iii) tag the local image to the remote repository
+	iv) push the image
+
+
+
+docker run -p 5000:5000 jagindia/jfs004-demo-1
