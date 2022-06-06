@@ -1,0 +1,5 @@
+To create a docker image (without Dockerfile). only in spring 2.3 onwards
+	mvn spring-boot:build-image
+
+To run image:
+	docker run --tty --publish 8080:8080 <<imagename:tagname>>

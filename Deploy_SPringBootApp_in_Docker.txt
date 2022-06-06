@@ -1,0 +1,81 @@
+https://javatechonline.com/how-to-deploy-spring-boot-application-to-docker/
+
+https://www.youtube.com/watch?v=SzbeDqBSRkc&t=648s
+
+
+Dockerfile
+
+
+FROM openjdk:8               # FROM<image>
+VOLUME /tmp                   # Temporary location to run
+EXPOSE 8080                   # Provide port number
+ADD target/SpringBootDockerTest-0.0.1-SNAPSHOT.jar SpringBootDockerTest-0.0.1-SNAPSHOT.jar 
+ENTRYPOINT ["java","-jar","/SpringBootDockerTest-0.0.1-SNAPSHOT.jar"]       
+
+---------------------------------------------------
+1) create a spring boot application with following dependencies
+	Spring web
+	Actuator
+	Devtools
+
+2) in pom.xml,
+	inside the <build> tag (outside plugins tag)
+	<finalName>type the project name here</finalName>
+
+3) create a rest controller with get mapping
+
+4) Maven Build with following goals
+	clean install
+
+5) refresh the "target" folder and copy the jar file name
+
+6) Right click the project, add a File (without any extension)
+	File name must be "Dockerfile"
+
+7) inside the Dockerfile
+	FROM java:8
+	EXPOSE 8080
+	ADD target/jag-docker-demo-1.jar jag-docker-demo-1.jar 
+	ENTRYPOINT ["java","-jar","jag-docker-demo-1.jar"]
+
+8) save the file and build the project once again "clean install" to generate the jar
+
+--------------------------------------
+1) Go to Docker Hub website
+
+2) Login using your credentials
+
+3) create a repository
+
+4) open "cmd"
+	i) go to project folder that contains Dockerfile
+	ii) docker login		(press enter)
+	iii) docker build -t jag-docker-demo-1 .
+
+	now check the docker desktop for images.
+	this jag-docker-demo-1 should be found in the image (created few mins ago)
+
+5) now lets push this image to the Docker Hub
+	before that check the repository created in step 3. 
+	Last pushed: never (notice this)
+
+	i) go to cmd
+	ii) docker tag jag-docker-demo-1 jagindia/firstrepo
+	iii) docker push jagindia/firstrepo
+		or
+	docker push jagindia/jag-docker-demo-1
+	
+	iv) docker images
+
+	v) remove local images using
+		docker rmi <<imagename>>
+	vi) check images again
+		docker images
+
+	vii) check if our spring boot app is running now
+		ping 8080
+		not running
+6) run the spring boot app from docker hub
+	docker run -p 8080:8080 jagindia/firstrepo
+	
+	check localhost:8080

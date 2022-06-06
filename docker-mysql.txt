@@ -1,0 +1,68 @@
+1) docker login
+
+2) docker pull mysql:latest
+
+3) docker image ls
+
+4) The next step is to run a container in Docker with the MySQL image. To do this, execute the next command:
+
+docker run --name=mysql1 -p 3306:3306 -e MYSQL_ROOT_PASSWORD=rootuser -d mysql/mysql-server:8.0
+
+Let’s break down this command to understand it better:
+
+run - will run a new command in a new Docker container
+–name - will give a name to the new container created
+-p - will make the internal docker port visible outside docker
+-e - will change the root password. Here you can insert whatever password you want
+mysql/mysql-server:8.0 - will specify what image to run in the newly created container
+
+5) docker ps
+	list of containers running
+
+6) docker exec -it mysql1 mysql -uroot -p	
+
+7) docker-compose.yml
+
+version: "3"
+services:
+  employee-jdbc:
+    image: employee-jdbc
+    ports:
+      - "8080:8080"
+    networks:
+      - employee-mysql
+    depends_on:
+      - mysqldb
+ 
+  mysqldb:
+    image: mysql:8
+    networks:
+      - employee-mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=bootdb  
+
+networks:
+  employee-mysql: 
+
+
+TO REMOVE IMAGE BY FORCE
+docker rmi -f <<imagename>>
+
+TO REMOVE DOCKER CONTAINER
+docker rm <<containername>>
+
+
+to configure mysql in spring boot app 
+----------------------------------------
+https://find10.medium.com/how-to-connect-a-mysql-docker-container-with-a-local-spring-boot-application-9366707dce0d#:~:text=%20How%20to%20connect%20a%20MySQL%20Docker%20Container,run%20docker-compose%20up.%20This%20starts%20the...%20More%20
+
+
+
+
+
+create database bank;
+use bank;
+create table......
+desc tablename
+

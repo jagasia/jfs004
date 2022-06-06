@@ -1,0 +1,62 @@
+
+
+	systemctl start docker
+First lets create a network named user-mysql
+	docker network create user-mysql
+
+check the networks:
+	docker network ls
+
+
+We will use the image provided by dockerhub to run as container. Also we will specify following when running the container
+a. name of the mysql container
+a. What should be the password for MYSQL
+b. We want to create the Database named bootdb.
+c. specify the network user-mysql on which this container should be created.
+d. start the container in detached mode.
+
+
+docker container run --name mysqldb --network user-mysql -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=t3 -d mysql:8
+
+
+Next let us check if container has started correctly using logs command.
+	docker container logs -f mysqldb
+
+Using the exec command we can also inspect if the database named t3 is created successfully.
+	docker container exec -it mysqldb bash
+
+Now, login to mysql using username and password 
+	mysql -uroot -p
+
+	show databases;
+
+Next we will modify the application.properties in the Spring Boot application to make use of the mysql container name i.e.	mysqldb instead of localhost
+spring.datasource.url=jdbc:mysql://<<mysql container name. in this demo it is mysqldb>>/t3
+spring.datasource.username=root
+spring.datasource.password=root
+spring.datasource.platform=mysql
+spring.datasource.initialization-mode=always
+
+
+create the docker file:
+From openjdk:8
+copy ./target/employee-jdbc-0.0.1-SNAPSHOT.jar employee-jdbc-0.0.1-SNAPSHOT.jar
+CMD ["java","-jar","employee-jdbc-0.0.1-SNAPSHOT.jar"]
+
+
+build the docker image:
+	docker image build -t user-service .
+
+Next run this as a container. Also we are running the container on the employee-mysql network.
+	docker container run --network user-mysql --name user-service-container -p 8080:8080 -d user-service
+
+	docker ps
+
+
+
+docker network rm networkid
+
+
+clean install -Dmaven.test.skip=true
+
+https://www.javainuse.com/devOps/docker/docker-mysql

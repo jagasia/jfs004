@@ -1,0 +1,112 @@
+install docker for windows 
+	https://docs.docker.com/docker-for-windows/install/
+	after downloading 
+		Docker Desktop Installer.exe
+	execute the above downloaded file
+
+Restart computer
+
+update wsl:
+	Download the Linux kernel update package
+	https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi
+	execute it
+
+Restart computer
+
+To start docker:
+	systemctl start docker
+To create network:
+	docker network create employee-mysql
+To check the networks:
+	docker network ls
+
+experimental:true			(if error like cannot run linux)
+
+
+To check if virtualization is supported on Windows 8 and above, run the following command on your Windows terminal or command prompt.
+
+systeminfo
+If you see the following output, virtualization is supported on Windows.
+
+Hyper-V Requirements:     VM Monitor Mode Extensions: Yes
+                          Virtualization Enabled In Firmware: Yes
+                          Second Level Address Translation: Yes
+                          Data Execution Prevention Available: Yes
+If you see the following output, your system already has a Hypervisor installed and you can skip the next step.
+
+Hyper-V Requirements:     A hypervisor has been detected. Features required for Hyper-V will not be displayed.
+
+
+
+--------------------------------
+Lets run an existing application in docker.
+1) open cmd / terminal
+2) 
+3) docker run -p 5000:5000 in28min/todo-rest-api-h2:1.0.0.RELEASE
+4) http://localhost:5000/hello-world
+	check this in a browser
+	(also)
+http://localhost:5000/hello-world-bean
+
+5) 
+	i) To check the running containers list
+		docker container ls
+	ii) To check all the containers list
+		docker container ls -a
+6) to kill a container
+	docker stop <<container-id>>
+	docker container stop <<container-id>>
+
+	stop vs kill	(stop gracefully. Kill immediately)
+
+7) to run a docker container in the background
+	docker run -p 5000:5000 -d in28min/todo-rest-api-h2:1.0.0.RELEASE
+8) to check the logs,
+	docker logs <<container-id>>
+	(also)
+	docker logs -f <<first 5 digits of container id>>
+9) docker images
+	to list the images
+-------------------------------------------
+=============================================
+Lets deploy our java application in docker
+visit:
+	hub.docker.com
+sign in and search 
+	openjdk
+
+under "how to use this image", you can find "start a java instance in your app"
+
+FROM openjdk:7
+COPY . /usr/src/myapp
+WORKDIR /usr/src/myapp
+RUN javac Main.java
+CMD ["java", "Main"]
+
+-----------
+go to pom.xml and add the following below the </plugins>
+	<finalName>docker-spring-jag</finalName>
+rebuild and create the jar/war
+
+FROM openjdk:8
+ADD target/docker-spring-jag.war docker-spring-jag.war		(local jar path & the container path.here it is root)
+EXPOSE 8085
+--------------------------------------=====================Dockerfile-------------------------
+FROM java:8
+
+EXPOSE 8080
+
+ADD target/docker-demo.jar docker-demo.jar
+
+ENTRYPOINT ["java","-jar","docker-demo.jar"]
+
+
+
+
+To find the ip address of docker container
+	docker container inspect container_name_or_ID
+
+------------------------------------
+To create a docker image without using Dockerfine	(for spring boot applications)
+	mvn spring-boot:build-image
+

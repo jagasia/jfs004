@@ -1,0 +1,50 @@
+1) Dockerfile
+	FROM java:8
+	COPY /build/libs/book-manager-1.0-SNAPSHOT.jar book-manager-1.0-SNAPSHOT.jar
+	ENTRYPOINT ["java","-jar","book-manager-1.0-SNAPSHOT.jar"]
+
+2) docker-compose.yml
+version: '3'
+services:
+  docker-mysql:
+    restart: always
+    container_name: docker-mysql
+    image: mysql
+    environment:
+      MYSQL_DATABASE: book_manager
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_HOST: '%'
+    volumes:
+      - ./sql:/docker-entrypoint-initdb.d
+    ports:
+      - "6033:3306"
+    healthcheck:
+      test: "/usr/bin/mysql --user=root --password=root--execute \"SHOW DATABASES;\""
+      interval: 2s
+      timeout: 20s
+      retries: 10
+  book-manager-app:
+    restart: on-failure
+    build: ./
+    expose:
+      - "10222"
+    ports:
+      - 10222:10222
+    environment:
+      WAIT_HOSTS: mysql:3306
+    depends_on:
+      - docker-mysql
+
+
+
+
+
+
+ docker-compose up — This will execute Dockerfile commands and will run services defined in the docker-compose file.
+ docker-compose down — This will stop and remove all containers that were running by docker-compose file.
+ docker-compose up --build — If we do an update on the Dockerfile, the war/jar file, or the docker-compose file, then we have to execute this command to get updated data on the Docker machine.
+So, I think after running docker-compose up, It runs the application with all services in the Docker machine. Ignore some initial exception logs for database communication. To check whether it runs or not, we can check http://localhost:10222/book. We can see the list of books here. 
+
+Happy Coding!!!
+
+
