@@ -1,0 +1,123 @@
+Docker commands
+
+docker ps
+(or)
+docker contains ls
+(or) 
+docker ps -a
+
+all the above are used to list the containers running our system. 	-a (for all)
+------------------------------------------------------------------------------------------
+docker images
+docker image ls
+
+both are used to list the images present in our system
+-------------------------------------
+
+When we run a docker image, we get a container. Container is the running instance of an image.
+for one image, we can run it several times to get several containers.
+------------------------------
+docker rmi <<imageid>>		//removing an image that is present in our local repository
+docker rm	<<containerid>>		//removing a container that is running. Use -f to forcibely remove a container
+----------------------------
+1) create docker image
+	docker build -t jag-docker-demo-1 .
+2) tag docker image to remote repository
+	docker tag jag-docker-demo-1 jagindia/firstrepo
+3) push docker image that is taggee to the remote repository
+	docker push jagindia/firstrepo
+
+--------------------------------------
+Creating docker image:
+	i) using Dockerfile
+	ii) without Dockerfile but the app is a spring boot app.
+		Spring provides support to create a docker image
+			mvn spring-boot:build-image
+
+----------------------------------------
+What will you do, if we create a spring boot application and that access a mysql database?
+
+mysql runs in a separate docker
+our app runs in a separate docker
+
+So we have to run them together that is defined in a 
+	docker-compose.yml
+
+to run both as 2 services together, 
+	docker compose
+
+Another method:
+
+to create a docker network that will connect both dockers
+------------------
+But we do not face this issue in MFPE, because
+in MFPE, we use H2 in memory database ( we do not use mysql database )
+
+Just deploy our application. Thats all. It will have own database.
+In memory db will lose information when a restart.
+
+To have permanent data, we can use H2 file system. But it doesn't matter.
+
+
+spring boot application	
+		application.properties		use H2 in memory db
+	entity
+	repository
+	service
+	rest controller
+
+Test this rest api using postman
+
+and create an image of this app.
+push this app to hub.docker.com
+
+and share the url in our chat window.
+
+
+Steps for creating a spring rest api with h2 db:
+1) Create a spring boot app
+2) add dependencies
+	spring web
+	h2
+	spring data jpa
+	devTools
+3) application.properties
+	server.port=5000
+spring.datasource.url=jdbc:h2:mem:jag
+#spring.datasource.url=jdbc:h2:file:./data/sampledata
+spring.datasource.driverClassName=org.h2.Driver
+spring.datasource.username=sa
+spring.datasource.password=password
+spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+
+
+spring.h2.console.enabled=true
+spring.h2.console.path=/h2
+
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+
+
+4) create
+	entity
+	repository
+	service
+	controller
+5) test them in post man
+6) how to create a docker image without Dockerfile?
+	maven spring boot command
+		mvn spring-boot:build-image
+
+	befor running this command, create jar	(by maven build with goal: clean install)
+
+
+
+7) create a remote repo		hub.docker.com
+8) tag local image to remote repo
+	docker tag h2-demo-1:0.0.1-SNAPSHOT	jagindia/h2-demo-1
+9) push 
+	docker push jagindia/h2-demo-1
+
+
+
+docker run -p 5000:5000 jagindia/h2-demo-1
