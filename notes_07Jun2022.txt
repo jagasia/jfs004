@@ -1,0 +1,100 @@
+DevOps
+	Git
+	Jira
+	Jenkins
+
+Git
+-----
+	You have to install git in your system.
+	why we install git? 
+		git will allow you to run commands in CLI
+		Popular git applications are
+			Git Hub
+			Git Lab
+
+Git Hub
+	is just for your learning purpose.
+
+Git Lab
+	is used for MFPE.
+	you can login to Git Lab using your cognizant account. 	Password is 
+
+Git Lab
+	is used for many purposes
+		code repository
+			we can push our code as a branch, while
+			many of our team mates also can push their branches.
+			we can pull their branches
+			we can merge the branches
+
+		Project work allocation
+			issues
+				the work you issue to the team member
+			milestones
+				sprint 1	(contains the issues)
+				sprint 2
+		
+		CI/CD
+			Continuous Integration / Continuous Development/deployment
+
+			After deployment, if we do some changes in our project, we want to reflect the changes in the deployed unit.
+			
+It helps in project management
+	Sir, Jira is also used for project management
+	in Jira, we can link Git Lab/Hub.
+
+together, we will use Jira and Git for project management
+---------------------------------------
+1) create a remote repository
+	remote repository is created in git hub
+	a folder in our system will be considered as a local repository
+
+2) git does not allow anybody to push content into your remote repository, 
+	until you make them as collaborator.
+3) lets create a folder that is going to be used as example
+
+
+https://github.com/jagasia/jun07-git-demo.git
+
+
+
+1) go to cmd
+2) git init
+3) git remote add origin https://github.com/jagasia/jun07-git-demo.git
+4) git add .
+5) git commit -m "first commit"
+6) git branch -M jag
+7) git push -u origin jag
+
+
+
+choose a location (empty folder)
+	git clone https://github.com/jagasia/jun07-git-demo.git
+
+clone
+	you will get a folder (in the same name as my git repository)
+
+pull 
+	only the contents inside the repo will be pulled
+
+unzip
+	right click
+		extract here	(pull)
+		extract as abcd folder	(clone)
+
+
+inside entity package (under base package)
+1) jag:
+	Product.java
+2) atshay:
+	Customer.java
+3) waris:
+	Sales.java
+
+
+git pull origin jag --allow-unrelated-histories
+git merge origin/jag
+
+
+
+

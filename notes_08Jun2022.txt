@@ -1,0 +1,39 @@
+DevOps
+	Git
+	Jenkins
+	Jira
+
+
+Jenkins
+------------
+	Creating jobs that can
+		run programs	
+		integrate/ deploy applications from repositories like git		CI/CD
+
+
+is a web application	(war)
+download jenkins war file
+
+how do we run any .war file?
+	java -jar <<war file name>>
+
+		8080
+
+
+
+we will deploy the project in git hub
+and using the git hub url, jenkins will run the project.
+That means, we are deployer who will setup the jenkins to run the project from git.
+
+The developer whenever they want to update the project, they will just push the project to git.
+The changes reflect when jenkins run next time.
+
+
+1) create a git repository
+	https://github.com/jagasia/jfs004-jenkis-1.git
+2) create some java program and push it to the git
+	remember the branch name
+3) go to localhost:8080		jenkins	already logged in
+4) 
+	New Item
+		
