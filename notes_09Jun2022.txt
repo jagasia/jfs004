@@ -1,0 +1,59 @@
+Jira
+-----
+	What is Jira?
+		Project management
+
+How is jira different from Git?
+	Git is only for code repo, create issues, milestones, allocate deadlines, status of completion
+
+Jira also provides the same
+	we can do more in Jira
+		and we can include Git or other tools in Jira
+
+
+atlassian.com
+
+1) create project
+2) choose template
+	Scrum
+3) either
+	team-managed
+	(or)
+	company managed
+
+
+customer rest api
+	CRUD
+
+product rest api
+	CRUD
+
+order rest api
+	how can we work independently without customer and product ??????
+	it is not possible
+
+	you can have a copy of entity classes alone here
+		remove those @Entity	@Id	whatever
+
+	but to find a product by id, 	we need to call product rest api 
+	from order rest api
+
+	Feign client?
+		you can call another rest api from here.
+
+
+
+rest api
+or spring boot application
+	main method
+
+run jar file,
+	it will run main method
+		
+
+main method
+
+
+java -jar
+
+in git navigate to that location

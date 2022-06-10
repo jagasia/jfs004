@@ -1,0 +1,97 @@
+Enhancement project
+	choose 1 project
+		import it and check document and implement the changes
+	90% to work on existing project only.
+	new project is very rare
+
+
+Debugging
+	video learning
+
+	step into
+	step over
+	step out
+
+break point			pause at this point. From this point, you will use 
+
+run a project
+debug a project
+
+Run As
+
+
+step into
+	go next line
+	but if next line is a method, 
+		it will go inside the method and step line by line
+		time consuming. if you have already tested this method, why should we go line by line
+			step out to exit the current method
+step over
+	go next line
+	if next line is a method, the entire method is completed like a single line
+
+
+step out
+	exit the current method
+
+
+windows
+	local variables
+	change detection		red color for the variable which has just changed
+
+LOGICAL ERRORS
+	loop is expected to run 10 times
+		but it executed 11 times or 9 times		is an example for logical error.
+
+Feign client
+--------------
+how can we call a controller from another controller using URL?
+
+from reactjs you know how to call a controller by using URL
+	axios
+
+from one rest api, how do you call another rest api?
+	feign client
+
+
+1) download a project from 
+	start.spring.io
+2) run the project in cmd prompt
+
+	do both of these without using eclipse/sts
+
+
+
+
+How will i understand a rest api?
+	if i do not understand, how will i know the json format to add an entity?
+
+	we need a documentation.
+
+How can we create documentation for a rest api?
+	normally, SOAP webservices have documentation.	 WSDL		
+	But for rest api? by default there is no documentation.
+	we can create a documentation using swagger.
+
+
+Demo:
+	1) REST Api
+	2) Swagger		(no need for postman)
+	3) Feign client
+
+Product
+	id
+	name
+	price
+
+
+firstName	=	FIRST_NAME		default strategy
+spring.jpa.hibernate.naming.physical-strategy=org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+firstName=	firstName		only when you use above strategy
+
+
+
+create an interface that is annotated with feign client
+	url
+
+this interface can be autowired in a controller
